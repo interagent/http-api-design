@@ -333,7 +333,7 @@ case above where a dyno belongs to an app belongs to an org:
 ### Provide machine-readable JSON schema
 
 Provide a machine-readable schema to exactly specify your API. Use
-[prmd](https://github.com/heroku/prmd) to manage your schema, and ensure
+[prmd](https://github.com/interagent/prmd) to manage your schema, and ensure
 it validates with `prmd verify`.
 
 ### Provide human-readable docs
@@ -366,7 +366,7 @@ $ export TOKEN=... # acquire from dashboard
 $ curl -is https://$TOKEN@service.com/users
 ```
 
-If you use [prmd](https://github.com/heroku/prmd) to generate Markdown
+If you use [prmd](https://github.com/interagent/prmd) to generate Markdown
 docs, you will get examples for each endpoint for free.
 
 ### Describe stability
