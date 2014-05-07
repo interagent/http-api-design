@@ -17,6 +17,8 @@ way_.
 We assume you’re familiar with the basics of HTTP+JSON APIs and won’t
 cover all of the fundamentals of those in this guide.
 
+We welcome [contributions](CONTRIBUTING.md) to this guide.
+
 ## Contents
 
 *  [Return appropriate status codes](#return-appropriate-status-codes)
