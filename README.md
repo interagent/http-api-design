@@ -184,7 +184,7 @@ service-api.com/app-setups
 ```
 
 Downcase attributes as well, but use underscore separators so that
-attribute names are valid JSON keys, e.g.:
+attribute names can be typed without quotes in JavaScript, e.g.:
 
 ```
 "service_class": "first"
