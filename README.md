@@ -53,8 +53,8 @@ responses should be coded according to this guide:
   `PATCH` calls that complete synchronously
 * `201`: Request succeeded for a `POST` call that completes
   synchronously
-* `202`: Request succeeded for a `POST`, `DELETE`, or `PATCH` call that
-  will complete asynchronously
+* `202`: Request accepted for a `POST`, `DELETE`, or `PATCH` call that
+  will be processed asynchronously
 * `206`: Request succeeded on `GET`, but only a partial response
   returned: see [above on ranges](#paginate-with-ranges)
 
