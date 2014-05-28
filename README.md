@@ -26,7 +26,7 @@ We welcome [contributions](CONTRIBUTING.md) to this guide.
 *  [Accept serialized JSON in request bodies](#accept-serialized-json-in-request-bodies)
 *  [Provide resource (UU)IDs](#provide-resource-uuids)
 *  [Provide standard timestamps](#provide-standard-timestamps)
-*  [Use UTC times formatted in ISO8601](#use-utc-times-formatted-in-ISO8601)
+*  [Use UTC times formatted in ISO8601](#use-utc-times-formatted-in-iso8601)
 *  [Use consistent path formats](#use-consistent-path-formats)
 *  [Downcase paths and attributes](#downcase-paths-and-attributes)
 *  [Nest foreign key relations](#nest-foreign-key-relations)
