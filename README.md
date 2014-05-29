@@ -83,7 +83,7 @@ Content-Type: application/json;charset=utf-8
 }
 ```
 
-202 and 204 responses will not include the full resource representation,
+202 responses will not include the full resource representation,
 e.g.:
 
 ```
