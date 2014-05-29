@@ -159,6 +159,12 @@ e.g.:
 
 ### Use consistent path formats
 
+#### Resource names
+
+Use the plural version of a resource name unless the resource in question is a singleton within the system (for example, in most systems a given user would only ever have one account). This keeps it consistent in the way you refer to particular resources.
+
+#### Actions
+
 Prefer endpoint layouts that don’t need any special actions for
 individual resources. In cases where special actions are needed, place
 them under a standard `actions` prefix, to clearly delineate them:
