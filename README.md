@@ -133,7 +133,7 @@ Render UUIDs in downcased `8-4-4-4-12` format, e.g.:
 
 ### Provide standard timestamps
 
-Provide created_at and updated_at timestamps for resources by default,
+Provide `created_at` and `updated_at` timestamps for resources by default,
 e.g:
 
 ```json
