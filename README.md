@@ -193,7 +193,7 @@ Downcase attributes as well, but use underscore separators so that
 attribute names can be typed without quotes in JavaScript, e.g.:
 
 ```
-"service_class": "first"
+service_class: "first"
 ```
 
 ### Nest foreign key relations
