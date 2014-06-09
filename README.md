@@ -390,11 +390,11 @@ backwards incompatible changes within that API version. If you need to
 make backwards-incompatible changes, create a new API with an
 incremented version number.
 
-### Require SSL
+### Require TLS
 
-Require SSL to access the API, without exception. It’s not worth trying
-to figure out or explain when it is OK to use SSL and when it’s not.
-Just require SSL for everything.
+Require TLS to access the API, without exception. It’s not worth trying
+to figure out or explain when it is OK to use TLS and when it’s not.
+Just require TLS for everything.
 
 ### Pretty-print JSON by default
 
