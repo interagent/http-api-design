@@ -41,7 +41,7 @@ We welcome [contributions](CONTRIBUTING.md) to this guide.
 *  [Provide human-readable docs](#provide-human-readable-docs)
 *  [Provide executable examples](#provide-executable-examples)
 *  [Describe stability](#describe-stability)
-*  [Require SSL](#require-ssl)
+*  [Require TLS](#require-tls)
 *  [Pretty-print JSON by default](#pretty-print-json-by-default)
 
 ### Return appropriate status codes
