@@ -43,6 +43,8 @@ We welcome [contributions](CONTRIBUTING.md) to this guide.
 *  [Describe stability](#describe-stability)
 *  [Require TLS](#require-tls)
 *  [Pretty-print JSON by default](#pretty-print-json-by-default)
+*  [Wrap collection responses in a hash](#wrap-collection-responses-in-a-hash)
+
 
 ### Return appropriate status codes
 
@@ -428,3 +430,19 @@ all the time. You may consider for performance-sensitive APIs not
 pretty-printing certain endpoints (e.g. very high traffic ones) or not
 doing it for certain clients (e.g. ones known to be used by headless
 programs).
+
+### Wrap collection responses in a hash
+
+Returning an array as the root element for a response makes it difficult adapt and extend the response. Wrap the collection in a hash for better flexibility:
+
+```json
+{
+  "widgets": ["widget 1", "widget 2"]
+}
+```
+
+Instead of:
+
+```json
+["widget 1", "widget 2"]
+```
