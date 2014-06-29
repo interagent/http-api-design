@@ -21,28 +21,35 @@ We welcome [contributions](CONTRIBUTING.md) to this guide.
 
 ## Contents
 
-*  [Return appropriate status codes](#return-appropriate-status-codes)
-*  [Provide full resources where available](#provide-full-resources-where-available)
-*  [Accept serialized JSON in request bodies](#accept-serialized-json-in-request-bodies)
-*  [Provide resource (UU)IDs](#provide-resource-uuids)
-*  [Provide standard timestamps](#provide-standard-timestamps)
-*  [Use UTC times formatted in ISO8601](#use-utc-times-formatted-in-iso8601)
-*  [Use consistent path formats](#use-consistent-path-formats)
-*  [Downcase paths and attributes](#downcase-paths-and-attributes)
-*  [Nest foreign key relations](#nest-foreign-key-relations)
-*  [Support non-id dereferencing for convenience](#support-non-id-dereferencing-for-convenience)
-*  [Generate structured errors](#generate-structured-errors)
-*  [Support caching with Etags](#support-caching-with-etags)
-*  [Trace requests with Request-Ids](#trace-requests-with-request-ids)
-*  [Paginate with ranges](#paginate-with-ranges)
-*  [Show rate limit status](#show-rate-limit-status)
-*  [Version with Accepts header](#version-with-accepts-header)
-*  [Provide machine-readable JSON schema](#provide-machine-readable-json-schema)
-*  [Provide human-readable docs](#provide-human-readable-docs)
-*  [Provide executable examples](#provide-executable-examples)
-*  [Describe stability](#describe-stability)
-*  [Require TLS](#require-tls)
-*  [Pretty-print JSON by default](#pretty-print-json-by-default)
+*  Paths and resources
+  *  [Use consistent path formats](#use-consistent-path-formats)
+  *  [Support non-id dereferencing for convenience](#support-non-id-dereferencing-for-convenience)
+  *  [Minimize path nesting](#minimize-path-nesting)
+*  Request
+  *  [Accept serialized JSON in request bodies](#accept-serialized-json-in-request-bodies)
+  *  [Version with Accepts header](#version-with-accepts-header)
+  *  [Require TLS](#require-tls)
+*  Response
+  *  [Return appropriate status codes](#return-appropriate-status-codes)
+  *  [Paginate with ranges](#paginate-with-ranges)
+  *  Response Headers
+    *  [Support caching with Etags](#support-caching-with-etags)
+    *  [Trace requests with Request-Ids](#trace-requests-with-request-ids)
+    *  [Show rate limit status](#show-rate-limit-status)
+  *  Response Body
+    *  [Provide full resources where available](#provide-full-resources-where-available)
+    *  [Provide resource (UU)IDs](#provide-resource-uuids)
+    *  [Generate structured errors](#generate-structured-errors)
+    *  [Provide standard timestamps](#provide-standard-timestamps)
+    *  [Use UTC times formatted in ISO8601](#use-utc-times-formatted-in-iso8601)
+    *  [Downcase paths and attributes](#downcase-paths-and-attributes)
+    *  [Nest foreign key relations](#nest-foreign-key-relations)
+    *  [Pretty-print JSON by default](#pretty-print-json-by-default)
+* Specs and docs
+  *  [Provide machine-readable JSON schema](#provide-machine-readable-json-schema)
+  *  [Provide human-readable docs](#provide-human-readable-docs)
+  *  [Provide executable examples](#provide-executable-examples)
+  *  [Describe stability](#describe-stability)
 
 ### Return appropriate status codes
 
