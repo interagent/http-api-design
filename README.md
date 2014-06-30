@@ -37,6 +37,7 @@ We welcome [contributions](CONTRIBUTING.md) to this guide.
 *  [Paginate with ranges](#paginate-with-ranges)
 *  [Show rate limit status](#show-rate-limit-status)
 *  [Version with Accepts header](#version-with-accepts-header)
+*  [Minimize path nesting](#minimize-path-nesting)
 *  [Provide machine-readable JSON schema](#provide-machine-readable-json-schema)
 *  [Provide human-readable docs](#provide-human-readable-docs)
 *  [Provide executable examples](#provide-executable-examples)
