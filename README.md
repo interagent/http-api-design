@@ -59,6 +59,11 @@ responses should be coded according to this guide:
 * `206`: Request succeeded on `GET`, but only a partial response
   returned: see [above on ranges](#paginate-with-ranges)
 
+Pay attention to the use of authentication and authorization error codes:
+
+* `401 Unauthorized`: Request failed because user is not authenticated
+* `403 Forbidden`: Request failed because user does not have authorization to access a specific resource
+
 Refer to the [HTTP response code spec](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html)
 for guidance on status codes for user error and server error cases.
 
