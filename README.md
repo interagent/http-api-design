@@ -78,7 +78,7 @@ staleness in their subsequent requests by supplying the value in the
 
 #### Trace requests with Request-Ids
 
-Include a `Request-Id` header in each API response, populated with a
+Include a `X-Request-Id` header in each API response, populated with a
 UUID value. If both the server and client log these values, it will be
 helpful for tracing and debugging requests.
 
