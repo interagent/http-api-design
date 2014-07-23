@@ -57,9 +57,9 @@ Require TLS to access the API, without exception. It’s not worth trying
 to figure out or explain when it is OK to use TLS and when it’s not.
 Just require TLS for everything.
 
-Respond to non-TLS requests with `403 Forbidden`.  Redirects are 
-discouraged since they allow sloppy/bad client behaviour without 
-providing any clear gain.  Clients that rely on redirects double up on 
+Respond to non-TLS requests with `403 Forbidden`.  Redirects are
+discouraged since they allow sloppy/bad client behaviour without
+providing any clear gain.  Clients that rely on redirects double up on
 server traffic and render TLS useless since sensitive data will already
  have been exposed during the first call.
 
@@ -399,10 +399,15 @@ Be sure to include a trailing newline so that the user’s terminal prompt
 isn’t obstructed.
 
 For most APIs it will be fine performance-wise to pretty-print responses
-all the time. You may consider for performance-sensitive APIs not
-pretty-printing certain endpoints (e.g. very high traffic ones) or not
-doing it for certain clients (e.g. ones known to be used by headless
-programs).
+all the time. You may consider respecting the `indent` option given in
+the accept header, e.g.
+
+```
+Accept: application/vnd.heroku+json; version=3; indent=0
+```
+
+This way, clients who are concerned about performance can opt in to
+compacted output but when omited, they receive pretty-printed output.
 
 ### Artifacts
 
