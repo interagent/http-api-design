@@ -371,12 +371,17 @@ quantify request limits.
 Return the remaining number of request tokens with each request in the
 `RateLimit-Remaining` response header.
 
-#### Pretty-print JSON by default
+#### Keep JSON minified in all responses
 
-The first time a user sees your API is likely to be at the command line,
-using curl. It’s much easier to understand API responses at the
-command-line if they are pretty-printed. For the convenience of these
-developers, pretty-print JSON responses, e.g.:
+Extra whitespace adds needless response size to requests, and many
+clients for human consumption will automatically "prettify" JSON
+output. It is best to keep JSON responses minified e.g.:
+
+```json
+{"beta":false,"email":"alice@heroku.com","id":"01234567-89ab-cdef-0123-456789abcdef","last_login":"2012-01-01T12:00:00Z", "created_at":"2012-01-01T12:00:00Z","updated_at":"2012-01-01T12:00:00Z"}
+```
+
+Instead of e.g.:
 
 ```json
 {
@@ -389,20 +394,10 @@ developers, pretty-print JSON responses, e.g.:
 }
 ```
 
-Instead of e.g.:
-
-```json
-{"beta":false,"email":"alice@heroku.com","id":"01234567-89ab-cdef-0123-456789abcdef","last_login":"2012-01-01T12:00:00Z", "created_at":"2012-01-01T12:00:00Z","updated_at":"2012-01-01T12:00:00Z"}
-```
-
-Be sure to include a trailing newline so that the user’s terminal prompt
-isn’t obstructed.
-
-For most APIs it will be fine performance-wise to pretty-print responses
-all the time. You may consider for performance-sensitive APIs not
-pretty-printing certain endpoints (e.g. very high traffic ones) or not
-doing it for certain clients (e.g. ones known to be used by headless
-programs).
+You may consider optionally providing a way for clients to retreive 
+more verbose response, either via a query parameter (e.g. `?pretty=true`)
+or via an `Accept` header param (e.g.
+`Accept: application/vnd.heroku+json; version=3; indent=4;`).
 
 ### Artifacts
 
