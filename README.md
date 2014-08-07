@@ -42,7 +42,7 @@ We welcome [contributions](CONTRIBUTING.md) to this guide.
   *  [Nest foreign key relations](#nest-foreign-key-relations)
   *  [Generate structured errors](#generate-structured-errors)
   *  [Show rate limit status](#show-rate-limit-status)
-  *  [Pretty-print JSON by default](#pretty-print-json-by-default)
+  *  [Keep JSON minified in all responses](#keep-json-minified-in-all-responses)
 * [Artifacts](#artifacts)
   *  [Provide machine-readable JSON schema](#provide-machine-readable-json-schema)
   *  [Provide human-readable docs](#provide-human-readable-docs)
