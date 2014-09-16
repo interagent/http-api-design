@@ -57,7 +57,9 @@ Require TLS to access the API, without exception. It’s not worth trying
 to figure out or explain when it is OK to use TLS and when it’s not.
 Just require TLS for everything.
 
-Respond to non-TLS requests with `403 Forbidden`.  Redirects are 
+Suggested way, is to reject any non-TLS requests to the API. In other words make sure, that there is no server/proxy responding to http/80 port if possible, to avoid any unsecure exchange of any data. If your setup doesn't allow this at least reject it with `403 Forbidden`.
+
+Redirects are 
 discouraged since they allow sloppy/bad client behaviour without 
 providing any clear gain.  Clients that rely on redirects double up on 
 server traffic and render TLS useless since sensitive data will already
