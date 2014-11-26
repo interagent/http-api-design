@@ -126,7 +126,7 @@ Return suitable codes to provide additional information when there are errors:
 * `429 Too Many Requests`: You have been rate-limited, retry later
 * `500 Internal Server Error`: Something went wrong on the server, check status site and/or report the issue
 
-Refer to the [HTTP response code spec](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html)
+Refer to the [HTTP response code spec](https://tools.ietf.org/html/rfc7231#section-6)
 for guidance on status codes for user error and server error cases.
 
 #### Provide full resources where available
