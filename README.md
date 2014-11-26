@@ -106,8 +106,10 @@ ordering, and page-walking.
 Return appropriate HTTP status codes with each response. Successful
 responses should be coded according to this guide:
 
-* `200`: Request succeeded for a `GET` calls, and for `DELETE` or
-  `PATCH` calls that complete synchronously
+* `200`: Request succeeded for a `GET` call, and for `PATCH` calls
+  that complete synchronously
+* `204`: Request succeeded for a `DELETE` call that completed
+  synchronously
 * `201`: Request succeeded for a `POST` call that completes
   synchronously
 * `202`: Request accepted for a `POST`, `DELETE`, or `PATCH` call that
@@ -131,13 +133,15 @@ for guidance on status codes for user error and server error cases.
 
 #### Provide full resources where available
 
-Provide the full resource representation (i.e. the object with all
-attributes) whenever possible in the response. Always provide the full
-resource on 200 and 201 responses, including `PUT`/`PATCH` and `DELETE`
-requests, e.g.:
+Provide _latest copy_ of the full resource representation (i.e. the
+object with all attributes) whenever possible in the response.
+Always provide the full resource on 200 and 201 responses, including
+`PUT`/`PATCH` requests e.g.:
 
 ```
-$ curl -X DELETE \  
+$ curl -X PATCH \  
+  -H "Content-Type: application/json" \
+  -d '{"hostname":"subdomain.example.com"}' \
   https://service.com/apps/1f9b/domains/0fd4
 
 HTTP/1.1 200 OK
@@ -149,6 +153,16 @@ Content-Type: application/json;charset=utf-8
   "id": "01234567-89ab-cdef-0123-456789abcdef",
   "updated_at": "2012-01-01T12:00:00Z"
 }
+```
+
+204 responses such as `DELETE` should never include any content,
+only headers should be sent e.g.:
+
+```
+$ curl -X DELETE \  
+  https://service.com/apps/1f9b/domains/0fd4
+
+HTTP/1.1 204 No Content
 ```
 
 202 responses will not include the full resource representation,
