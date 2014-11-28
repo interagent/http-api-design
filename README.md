@@ -136,7 +136,7 @@ attributes) whenever possible in the response. Always provide the full
 resource on 200 and 201 responses, including `PUT`/`PATCH` and `DELETE`
 requests, e.g.:
 
-```
+```bash
 $ curl -X DELETE \  
   https://service.com/apps/1f9b/domains/0fd4
 
@@ -154,7 +154,7 @@ Content-Type: application/json;charset=utf-8
 202 responses will not include the full resource representation,
 e.g.:
 
-```
+```bash
 $ curl -X DELETE \  
   https://service.com/apps/1f9b/dynos/05bd
 
@@ -170,7 +170,7 @@ Accept serialized JSON on `PUT`/`PATCH`/`POST` request bodies, either
 instead of or in addition to form-encoded data. This creates symmetry
 with JSON-serialized response bodies, e.g.:
 
-```
+```bash
 $ curl -X POST https://service.com/apps \
     -H "Content-Type: application/json" \
     -d '{"name": "demoapp"}'
@@ -232,7 +232,7 @@ identify a resource. For example, a user may think in terms of a Heroku
 app name, but that app may be identified by a UUID. In these cases you
 may want to accept both an id or name, e.g.:
 
-```
+```bash
 $ curl https://service.com/apps/{app_id_or_name}
 $ curl https://service.com/apps/97addcf0-c182
 $ curl https://service.com/apps/www-prod
@@ -283,10 +283,10 @@ e.g:
 
 ```json
 {
-  ...
+  // ...
   "created_at": "2012-01-01T12:00:00Z",
   "updated_at": "2012-01-01T13:00:00Z",
-  ...
+  // ...
 }
 ```
 
@@ -312,7 +312,7 @@ Serialize foreign key references with a nested object, e.g.:
   "owner": {
     "id": "5d8201b0..."
   },
-  ...
+  // ...
 }
 ```
 
@@ -322,7 +322,7 @@ Instead of e.g:
 {
   "name": "service-production",
   "owner_id": "5d8201b0...",
-  ...
+  // ...
 }
 ```
 
@@ -338,7 +338,7 @@ or introduce more top-level response fields, e.g.:
     "name": "Alice",
     "email": "alice@heroku.com"
   },
-  ...
+  // ...
 }
 ```
 
@@ -381,7 +381,7 @@ clients for human consumption will automatically "prettify" JSON
 output. It is best to keep JSON responses minified e.g.:
 
 ```json
-{"beta":false,"email":"alice@heroku.com","id":"01234567-89ab-cdef-0123-456789abcdef","last_login":"2012-01-01T12:00:00Z", "created_at":"2012-01-01T12:00:00Z","updated_at":"2012-01-01T12:00:00Z"}
+{"beta":false,"email":"alice@heroku.com","id":"01234567-89ab-cdef-0123-456789abcdef","last_login":"2012-01-01T12:00:00Z","created_at":"2012-01-01T12:00:00Z","updated_at":"2012-01-01T12:00:00Z"}
 ```
 
 Instead of e.g.:
@@ -435,7 +435,7 @@ terminals to see working API calls. To the greatest extent possible,
 these examples should be usable verbatim, to minimize the amount of
 work a user needs to do to try the API, e.g.:
 
-```
+```bash
 $ export TOKEN=... # acquire from dashboard
 $ curl -is https://$TOKEN@service.com/users
 ```
