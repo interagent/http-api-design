@@ -281,7 +281,7 @@ Render UUIDs in downcased `8-4-4-4-12` format, e.g.:
 Provide `created_at` and `updated_at` timestamps for resources by default,
 e.g:
 
-```json
+```javascript
 {
   // ...
   "created_at": "2012-01-01T12:00:00Z",
@@ -306,7 +306,7 @@ e.g.:
 
 Serialize foreign key references with a nested object, e.g.:
 
-```json
+```javascript
 {
   "name": "service-production",
   "owner": {
@@ -318,7 +318,7 @@ Serialize foreign key references with a nested object, e.g.:
 
 Instead of e.g:
 
-```json
+```javascript
 {
   "name": "service-production",
   "owner_id": "5d8201b0...",
@@ -330,7 +330,7 @@ This approach makes it possible to inline more information about the
 related resource without having to change the structure of the response
 or introduce more top-level response fields, e.g.:
 
-```json
+```javascript
 {
   "name": "service-production",
   "owner": {
