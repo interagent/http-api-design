@@ -106,11 +106,13 @@ ordering, and page-walking.
 Return appropriate HTTP status codes with each response. Successful
 responses should be coded according to this guide:
 
-* `200`: Request succeeded for a `GET` calls, and for `DELETE` or
-  `PATCH` calls that complete synchronously
-* `201`: Request succeeded for a `POST` call that completes
-  synchronously
-* `202`: Request accepted for a `POST`, `DELETE`, or `PATCH` call that
+* `200`: Request succeeded for a `GET` call, for a `DELETE` or
+  `PATCH` call that completed synchronously, or for a `PUT` call that
+  synchronously updated an existing resource
+* `201`: Request succeeded for a `POST` call that completed
+  synchronously, or for a `PUT` call that synchronously created a new
+  resource
+* `202`: Request accepted for a `POST`, `PUT`, `DELETE`, or `PATCH` call that
   will be processed asynchronously
 * `206`: Request succeeded on `GET`, but only a partial response
   returned: see [above on ranges](#paginate-with-ranges)
