@@ -4,3 +4,4 @@
 * Mark McGranaghan <mmcgrana@gmail.com>
 * Jamu Kakar <jkakar@kakar.ca>
 * Jonathan Roes <jroes@jroes.net>
+* Suhas Chatekar <suhas.chatekar@gmail.com>
