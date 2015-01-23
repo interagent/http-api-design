@@ -26,7 +26,7 @@ We welcome [contributions](CONTRIBUTING.md) to this guide.
   *  [Require Versioning in the Accepts Header](#require-versioning-in-the-accepts-header)
   *  [Support ETags for Caching](#support-etags-for-caching)
   *  [Provide Request-Ids for Introspection](#provide-request-ids-for-introspection)
-  *  [Paginate with ranges](#paginate-with-ranges)
+  *  [Divide Large Responses Across Requests with Ranges](#divide-large-responses-across-requests-with-ranges)
 * [Requests](#requests)
   *  [Return appropriate status codes](#return-appropriate-status-codes)
   *  [Provide full resources where available](#provide-full-resources-where-available)
@@ -96,13 +96,13 @@ Include a `Request-Id` header in each API response, populated with a
 UUID value. By logging these values on the client, server and any backing
 services, it provides a mechanism to trace, diagnose and debug requests.
 
-#### Paginate with Ranges
+#### Divide Large Responses Across Requests with Ranges
 
-Paginate any responses that are liable to produce large amounts of data.
-Use `Content-Range` headers to convey pagination requests. Follow the
-example of the [Heroku Platform API on Ranges](https://devcenter.heroku.com/articles/platform-api-reference#ranges)
+Large responses should be broken across multiple requests using `Range` headers
+to specify when more data is available and how to retrieve it. See the
+[Heroku Platform API discussion of Ranges](https://devcenter.heroku.com/articles/platform-api-reference#ranges)
 for the details of request and response headers, status codes, limits,
-ordering, and page-walking.
+ordering, and iteration.
 
 ### Requests
 
