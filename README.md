@@ -24,7 +24,7 @@ We welcome [contributions](CONTRIBUTING.md) to this guide.
 * [Foundations](#foundations)
   *  [Require TLS](#require-tls)
   *  [Version with Accepts header](#version-with-accepts-header)
-  *  [Support caching with Etags](#support-caching-with-etags)
+  *  [Support ETags for Caching](#support-etags-for-caching)
   *  [Trace requests with Request-Ids](#trace-requests-with-request-ids)
   *  [Paginate with ranges](#paginate-with-ranges)
 * [Requests](#requests)
@@ -78,12 +78,12 @@ Accept: application/vnd.heroku+json; version=3
 Prefer not to have a default version, instead requiring clients to
 explicitly peg their usage to a specific version.
 
-#### Support caching with Etags
+#### Support ETags for Caching
 
 Include an `ETag` header in all responses, identifying the specific
-version of the returned resource. The user should be able to check for
-staleness in their subsequent requests by supplying the value in the
-`If-None-Match` header.
+version of the returned resource. This allows users to cache resources
+and use requests with this value in the `If-None-Match` header to determine
+if the cache should be updated.
 
 #### Trace requests with Request-Ids
 
