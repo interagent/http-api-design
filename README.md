@@ -25,7 +25,7 @@ We welcome [contributions](CONTRIBUTING.md) to this guide.
   *  [Require Secure Connections](#require-secure-connections)
   *  [Version with Accepts header](#version-with-accepts-header)
   *  [Support ETags for Caching](#support-etags-for-caching)
-  *  [Trace requests with Request-Ids](#trace-requests-with-request-ids)
+  *  [Provide Request-Ids for Introspection](#provide-request-ids-for-introspection)
   *  [Paginate with ranges](#paginate-with-ranges)
 * [Requests](#requests)
   *  [Return appropriate status codes](#return-appropriate-status-codes)
@@ -85,11 +85,11 @@ version of the returned resource. This allows users to cache resources
 and use requests with this value in the `If-None-Match` header to determine
 if the cache should be updated.
 
-#### Trace requests with Request-Ids
+#### Provide Request-Ids for Introspection
 
 Include a `Request-Id` header in each API response, populated with a
-UUID value. If both the server and client log these values, it will be
-helpful for tracing and debugging requests.
+UUID value. By logging these values on the client, server and any backing
+services, it provides a mechanism to trace, diagnose and debug requests.
 
 #### Paginate with Ranges
 
