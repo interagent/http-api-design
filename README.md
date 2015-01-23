@@ -23,7 +23,7 @@ We welcome [contributions](CONTRIBUTING.md) to this guide.
 
 * [Foundations](#foundations)
   *  [Require Secure Connections](#require-secure-connections)
-  *  [Version with Accepts header](#version-with-accepts-header)
+  *  [Require Versioning in the Accepts Header](#require-versioning-in-the-accepts-header)
   *  [Support ETags for Caching](#support-etags-for-caching)
   *  [Provide Request-Ids for Introspection](#provide-request-ids-for-introspection)
   *  [Paginate with ranges](#paginate-with-ranges)
@@ -66,17 +66,22 @@ providing any clear gain.  Clients that rely on redirects double up on
 server traffic and render TLS useless since sensitive data will already
  have been exposed during the first call.
 
-#### Version with Accepts header
+#### Require Versioning in the Accepts Header
 
-Version the API from the start. Use the `Accepts` header to communicate
-the version, along with a custom content type, e.g.:
+Versioning and the transition between versions can be one of the more
+challenging aspects of designing and operating an API. As such, it is best to
+start with some mechanisms in place to mitigate this from the start.
+
+To prevent surprise, breaking changes to users, it is best to require a version
+be specified with all requests. Default versions should be avoided as they are
+very difficult, at best, to change in the future.
+
+It is best to provide version specification in the headers, with other
+metadata, using the `Accepts header with a custom content type, e.g.:
 
 ```
 Accept: application/vnd.heroku+json; version=3
 ```
-
-Prefer not to have a default version, instead requiring clients to
-explicitly peg their usage to a specific version.
 
 #### Support ETags for Caching
 
