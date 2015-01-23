@@ -22,7 +22,7 @@ We welcome [contributions](CONTRIBUTING.md) to this guide.
 ## Contents
 
 * [Foundations](#foundations)
-  *  [Require TLS](#require-tls)
+  *  [Require Secure Connections](#require-secure-connections)
   *  [Version with Accepts header](#version-with-accepts-header)
   *  [Support ETags for Caching](#support-etags-for-caching)
   *  [Trace requests with Request-Ids](#trace-requests-with-request-ids)
@@ -51,11 +51,11 @@ We welcome [contributions](CONTRIBUTING.md) to this guide.
 
 ### Foundations
 
-#### Require TLS
+#### Require Secure Connections
 
-Require TLS to access the API, without exception. It’s not worth trying
-to figure out or explain when it is OK to use TLS and when it’s not.
-Just require TLS for everything.
+Require secure connections with TLS to access the API, without exception.
+It’s not worth trying to figure out or explain when it is OK to use TLS
+and when it’s not. Just require TLS for everything.
 
 Ideally, simply reject any non-TLS requests by not responding to requests for
 http or port 80 to avoid any insecure data exchange. In environments where this
