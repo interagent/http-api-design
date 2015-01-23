@@ -22,6 +22,7 @@ We welcome [contributions](CONTRIBUTING.md) to this guide.
 ## Contents
 
 * [Foundations](#foundations)
+  *  [Separate Concerns](#separate-concerns)
   *  [Require Secure Connections](#require-secure-connections)
   *  [Require Versioning in the Accepts Header](#require-versioning-in-the-accepts-header)
   *  [Support ETags for Caching](#support-etags-for-caching)
@@ -50,6 +51,18 @@ We welcome [contributions](CONTRIBUTING.md) to this guide.
   *  [Describe stability](#describe-stability)
 
 ### Foundations
+
+#### Separate Concerns
+
+Keep things simple while designing by separating the concerns between the
+different parts of the request and response cycle. Keeping simple rules here
+allows for greater focus on larger and harder problems.
+
+Requests and responses will be made to address a particular resource or
+collection. Use the path to indicate identity, the body to transfer the
+contents and headers to communicate metadata. Query params may be used as a
+means to pass header information also in edge cases, but headers are preferred
+as they are more flexible and can convey more diverse information.
 
 #### Require Secure Connections
 
