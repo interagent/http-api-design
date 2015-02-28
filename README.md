@@ -133,7 +133,7 @@ responses should be coded according to this guide:
 * `202`: Request accepted for a `POST`, `PUT`, `DELETE`, or `PATCH` call that
   will be processed asynchronously
 * `206`: Request succeeded on `GET`, but only a partial response
-  returned: see [above on ranges](#paginate-with-ranges)
+  returned: see [above on ranges](#divide-large-responses-across-requests-with-ranges)
 
 Pay attention to the use of authentication and authorization error codes:
 
