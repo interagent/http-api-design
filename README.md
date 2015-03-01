@@ -336,7 +336,7 @@ Serialize foreign key references with a nested object, e.g.:
 }
 ```
 
-Instead of e.g:
+Instead of e.g.:
 
 ```javascript
 {
