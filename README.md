@@ -49,6 +49,7 @@ We welcome [contributions](CONTRIBUTING.md) to this guide.
   *  [Provide human-readable docs](#provide-human-readable-docs)
   *  [Provide executable examples](#provide-executable-examples)
   *  [Describe stability](#describe-stability)
+* [Translations](#translations)
 
 ### Foundations
 
@@ -476,4 +477,10 @@ Once your API is declared production-ready and stable, do not make
 backwards incompatible changes within that API version. If you need to
 make backwards-incompatible changes, create a new API with an
 incremented version number.
+
+
+### Translations
+ * [Korean version](https://github.com/yoondo/http-api-design) (based on [f38dba6](https://github.com/interagent/http-api-design/commit/f38dba6fd8e2b229ab3f09cd84a8828987188863)), by [@yoondo](https://github.com/yoondo/)
+ * [Simplified Chinese version](https://github.com/ZhangBohan/http-api-design-ZH_CN) (based on [337c4a0](https://github.com/interagent/http-api-design/commit/337c4a05ad08f25c5e232a72638f063925f3228a)), by [@ZhangBohan](https://github.com/ZhangBohan/)
+ * [Traditional Chinese version](https://github.com/kcyeu/http-api-design) (based on [232f8dc](https://github.com/interagent/http-api-design/commit/232f8dc6a941d0b25136bf64998242dae5575f66)), by [@kcyeu](https://github.com/kcyeu/)
 
