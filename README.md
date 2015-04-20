@@ -1,23 +1,17 @@
-# HTTP API Design Guide
+# Guía de diseño de APIs HTTPGuide
 
-## Introduction
+## Introducción
 
-This guide describes a set of HTTP+JSON API design practices, originally
-extracted from work on the [Heroku Platform API](https://devcenter.heroku.com/articles/platform-api-reference).
+Esta guía describe un conjunto de buenas prácticas para el diseño de APIs HTTP+JSON originalmente extraído del trabajo en el API de la [plataforma Heroku](https://devcenter.heroku.com/articles/platform-api-reference).
 
-This guide informs additions to that API and also guides new internal
-APIs at Heroku. We hope it’s also of interest to API designers
-outside of Heroku.
+Esta guía incluye añadidos a ese API y también sirve de guía para nuevas APIs internas en Heroku. Esteramos que sea de interés a los diseñadores de APIs que no son de Heroku.
 
-Our goals here are consistency and focusing on business logic while
-avoiding design bikeshedding. We’re looking for _a good, consistent,
-well-documented way_ to design APIs, not necessarily _the only/ideal
-way_.
+Los objetivos que nos hemos marcado son consistencia y foco en la lógica de negocio, a la vez que evitamos centrarnos en detalles supérfluos (_N.T. el término en ingles es "design bikeshedding" explicado en [este artículo](http://es.wikipedia.org/wiki/Ley_de_Parkinson_de_la_trivialidad))._
+Buscamos un _método bueno, consistente y bien documentado_ para el diseño de APIs, aunque no necesariamente _el método único o ideal_.
 
-We assume you’re familiar with the basics of HTTP+JSON APIs and won’t
-cover all of the fundamentals of those in this guide.
+Asumimos que los conceptos básicos de APIs HTTP+JSON son familiares para tí, así que no entraremos en sus fundamentos en esta guía.
 
-We welcome [contributions](CONTRIBUTING.md) to this guide.
+Agradecemos también [contribuciones](CONTRIBUTING.md) a la versión inglesa de esta guía o a su traducción al castellano.
 
 ## Contents
 
