@@ -2,7 +2,7 @@
 
 ## Introducción
 
-Esta guía describe un conjunto de buenas prácticas para el diseño de APIs HTTP+JSON originalmente extraído del trabajo en el API de la [plataforma Heroku](https://devcenter.heroku.com/articles/platform-api-reference).
+Esta guía describe una serie de buenas prácticas para el diseño de APIs HTTP+JSON originalmente extraído del trabajo en el API de la [plataforma Heroku](https://devcenter.heroku.com/articles/platform-api-reference).
 
 Esta guía incluye añadidos a ese API y también sirve de guía para nuevas APIs internas en Heroku. Esteramos que sea de interés a los diseñadores de APIs que no son de Heroku.
 
@@ -13,37 +13,37 @@ Asumimos que los conceptos básicos de APIs HTTP+JSON son familiares para tí, a
 
 Agradecemos también [contribuciones](CONTRIBUTING.md) a la versión inglesa de esta guía o a su traducción al castellano.
 
-## Contents
+## Contenidos
 
-* [Foundations](#foundations)
-  *  [Separate Concerns](#separate-concerns)
-  *  [Require Secure Connections](#require-secure-connections)
-  *  [Require Versioning in the Accepts Header](#require-versioning-in-the-accepts-header)
-  *  [Support ETags for Caching](#support-etags-for-caching)
-  *  [Provide Request-Ids for Introspection](#provide-request-ids-for-introspection)
-  *  [Divide Large Responses Across Requests with Ranges](#divide-large-responses-across-requests-with-ranges)
-* [Requests](#requests)
-  *  [Return appropriate status codes](#return-appropriate-status-codes)
-  *  [Provide full resources where available](#provide-full-resources-where-available)
-  *  [Accept serialized JSON in request bodies](#accept-serialized-json-in-request-bodies)
-  *  [Use consistent path formats](#use-consistent-path-formats)
-    *  [Downcase paths and attributes](#downcase-paths-and-attributes)
-    *  [Support non-id dereferencing for convenience](#support-non-id-dereferencing-for-convenience)
-    *  [Minimize path nesting](#minimize-path-nesting)
-* [Responses](#responses)
-  *  [Provide resource (UU)IDs](#provide-resource-uuids)
-  *  [Provide standard timestamps](#provide-standard-timestamps)
-  *  [Use UTC times formatted in ISO8601](#use-utc-times-formatted-in-iso8601)
-  *  [Nest foreign key relations](#nest-foreign-key-relations)
-  *  [Generate structured errors](#generate-structured-errors)
-  *  [Show rate limit status](#show-rate-limit-status)
-  *  [Keep JSON minified in all responses](#keep-json-minified-in-all-responses)
-* [Artifacts](#artifacts)
-  *  [Provide machine-readable JSON schema](#provide-machine-readable-json-schema)
-  *  [Provide human-readable docs](#provide-human-readable-docs)
-  *  [Provide executable examples](#provide-executable-examples)
-  *  [Describe stability](#describe-stability)
-* [Translations](#translations)
+* [Fundamentos](#fundamentos)
+  *  [Separar responsabilidades](#separar-responsabilidades)
+  *  [Conexiones seguras requeridas](#conexiones-seguras-requeridas)
+  *  [Versionado en la cabecera Accepts requerido](#versionado-en-la-cabecera-accepts-requerido)
+  *  [Soportar ETags para cacheado](#soportar-etags-para-cacheado)
+  *  [Proporcionar identificadores de petición para introspección](#Proporcionar-identificadores-de-petición-para-introspeccion)
+  *  [Dividir respuestas largas en varias peticiones usando rangos](#dividir-respuestas-largas-en-varias-peticiones-usando-rangos)
+* [Peticiones](#peticiones)
+  *  [Retornar códigos de estado apropiados](#retornar-codigos-de-estado-apropiados)
+  *  [Proporcionar recursos completos si están disponibles](#proporcionar-recursos-completos-si-estan-disponibles)
+  *  [Aceptar JSON serializado en el cuerpo de las peticiones](#aceptar-json-serializado-en-el-cuerpo-de-las-peticiones)
+  *  [Usar formatos de ruta consistentes](#usar-formatos-de-ruta-consistentes)
+    *  [Utilizar minúsculas para rutas y atributos](#utilizar-minusculas-para-rutas-y-atributos)
+    *  [Soportar referencias por atributos no-identificadores como ayuda](#soportar-referencias-por-atributos-no-identificadores-como-ayuda)
+    *  [Minimizar anidado de rutas](#minimizar-anidad-de-rutas)
+* [Respuestas](#respuestas)
+  *  [Proporcionar identificadores únicos (UUIDs) de recursos](#proporcionar-identificadores-unicos-uuids-de-recursos)
+  *  [Proporcionar fechas y horas (timestamps) estándar](#proporcionar-fechas-y-horas-timestamps-estandar)
+  *  [Usar horas en UTC formateadas usando ISO8601](#usar-horas-en-utc-formateadas-usando-ISO8601)
+  *  [Anidar relaciones de clave foránea](#anidar-relaciones-de-clave-foranea)
+  *  [Generar errores estructurados](#generar-errores-estructurados)
+  *  [Mostrar el estado del límite de peticiones](#mostrar-el-estado-del-limite-de-peticiones)
+  *  [Mantener los JSON minificados en todas las respuestas](#mantener-los-json-minificados-en-todas-las-respuestas)
+* [Artefactos](#artifactos)
+  *  [Proporcionar un esquema de JSON procesable](#proporcionar-un-esquema-de-json-procesable)
+  *  [Proporcionar docmentación para desarrolladores](#proporcionar-docmentacion-para-desarrolladores)
+  *  [Proporcionar ejemplos ejecutables](#proporcionar-ejemplos-ejecutables)
+  *  [Describir la estabilidad](#describir-la-estabilidad)
+* [Traducciones](#tranducciones)
 
 ### Foundations
 
