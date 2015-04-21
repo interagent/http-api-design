@@ -18,7 +18,7 @@ Agradecemos también [contribuciones](CONTRIBUTING.md) a la versión inglesa de 
 * [Fundamentos](#fundamentos)
   *  [Separar responsabilidades](#separar-responsabilidades)
   *  [Conexiones seguras requeridas](#conexiones-seguras-requeridas)
-  *  [Versionado en la cabecera Accepts requerido](#versionado-en-la-cabecera-accepts-requerido)
+  *  [Versionado con la cabecera Accepts requerido](#versionado-con-la-cabecera-accepts-requerido)
   *  [Soportar ETags para cacheado](#soportar-etags-para-cacheado)
   *  [Proporcionar identificadores de petición para introspección](#Proporcionar-identificadores-de-petición-para-introspeccion)
   *  [Dividir respuestas largas en varias peticiones usando rangos](#dividir-respuestas-largas-en-varias-peticiones-usando-rangos)
@@ -45,19 +45,13 @@ Agradecemos también [contribuciones](CONTRIBUTING.md) a la versión inglesa de 
   *  [Describir la estabilidad](#describir-la-estabilidad)
 * [Traducciones](#tranducciones)
 
-### Foundations
+### Fundamentos
 
-#### Separate Concerns
+#### Separa responsabilidades
 
-Keep things simple while designing by separating the concerns between the
-different parts of the request and response cycle. Keeping simple rules here
-allows for greater focus on larger and harder problems.
+Mientras diseñas, simplifica las cosas al máximo separando las responsabilidades de las diferentes partes del ciclo de petición y respuesta. Mantener reglas sencillas en esto te permite enfocarte en problemas mayores y más complejos.
 
-Requests and responses will be made to address a particular resource or
-collection. Use the path to indicate identity, the body to transfer the
-contents and headers to communicate metadata. Query params may be used as a
-means to pass header information also in edge cases, but headers are preferred
-as they are more flexible and can convey more diverse information.
+Las peticiones y respuestas se realizarán para obtener un recurso o colección en concreto. Usa la ruta (_N.T. el path_) para especificar la entidad, el cuerpo para transferir los contenidos y las cabeceras para especificar metadatos. Los parámetros (_N.T. query params_) pueden ser usados como un medio de pasar información de cabecera en casos extremos, pero es preferible usar las cabeceras ya que son más flexibles y pueden transmitir información más variada.
 
 #### Require Secure Connections
 
