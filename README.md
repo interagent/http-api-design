@@ -82,13 +82,9 @@ Incluye una cabecera `ETag` en todas las respuestas, identificando la versión e
 
 Incluye una cabecear `Request-Id` en cada respuesta del API, junto con un valor UUID. _Logueando_ estos valores en el cliente, en el servidor y cualquier otro servicio de apoyo, se ofrece un mecanismo para _tracear_, diagnosticar y depurar las peticiones.
 
-#### Divide Large Responses Across Requests with Ranges
+#### Dividir respuestas largas en varias peticiones usando rangos
 
-Large responses should be broken across multiple requests using `Range` headers
-to specify when more data is available and how to retrieve it. See the
-[Heroku Platform API discussion of Ranges](https://devcenter.heroku.com/articles/platform-api-reference#ranges)
-for the details of request and response headers, status codes, limits,
-ordering, and iteration.
+Las respuestas largas deben ser troceadas en múltiples peticiones usando la cabecera `Range` para especificar cuando están disponibles más datos y cómo recuperarlos. Consulta en [el debate sobre rangos (en inglés)](https://devcenter.heroku.com/articles/platform-api-reference#ranges) los detalles sobre las cabeceras de las peticiones y respuestas, los códigos de estado, límites, ordenación e iteración.
 
 ### Requests
 
