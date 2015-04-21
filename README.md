@@ -49,24 +49,18 @@ Agradecemos también [contribuciones](CONTRIBUTING.md) a la versión inglesa de 
 
 #### Separa responsabilidades
 
-Mientras diseñas, simplifica las cosas al máximo separando las responsabilidades de las diferentes partes del ciclo de petición y respuesta. Mantener reglas sencillas en esto te permite enfocarte en problemas mayores y más complejos.
+Mientras diseñas, simplifica al máximo separando las responsabilidades de las diferentes partes del ciclo de petición y respuesta. Mantener reglas sencillas en esto te permite enfocarte en problemas mayores y más complejos.
 
 Las peticiones y respuestas se realizarán para obtener un recurso o colección en concreto. Usa la ruta (_N.T. el path_) para especificar la entidad, el cuerpo para transferir los contenidos y las cabeceras para especificar metadatos. Los parámetros (_N.T. query params_) pueden ser usados como un medio de pasar información de cabecera en casos extremos, pero es preferible usar las cabeceras ya que son más flexibles y pueden transmitir información más variada.
 
-#### Require Secure Connections
+#### Conexiones seguras requeridas
 
-Require secure connections with TLS to access the API, without exception.
-It’s not worth trying to figure out or explain when it is OK to use TLS
-and when it’s not. Just require TLS for everything.
+Haz requerido el acceso seguro al API usando TLS, sin excepciones.
+No merece la pena intentar averiguar o explicar cuando se debe permitir acceso con TLS y cuando no. Haz obligatorio TLS para todo.
 
-Ideally, simply reject any non-TLS requests by not responding to requests for
-http or port 80 to avoid any insecure data exchange. In environments where this
-is not possible, respond with `403 Forbidden`.
+Idealmente, rechaza cualquier petición sin TLS sin responder a peticiones HTTP o al puerto 80, y así evitar cualquier intercambio de información insegura. En entornos en los que esto no sea posible, retorna con `403 Forbidden`.
 
-Redirects are discouraged since they allow sloppy/bad client behaviour without
-providing any clear gain.  Clients that rely on redirects double up on
-server traffic and render TLS useless since sensitive data will already
- have been exposed during the first call.
+Las redirecciones están desaconsejadas ya que permiten a los clientes tener comportamientos incorrectos/chapuceros sin ofrecer ninguna ventaja clara. Los clientes que dependen de las redirecciones duplican el tráfico del servidor and hacen que el TLS sea inutil ya que la información sensible ya ha sido expuesta durante la primera llamada.
 
 #### Require Versioning in the Accepts Header
 
