@@ -1,4 +1,4 @@
-# Guía de diseño de APIs HTTPGuide
+# Guía de diseño de APIs HTTP
 
 ## Introducción
 
