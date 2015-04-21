@@ -19,7 +19,7 @@ Agradecemos también [contribuciones](CONTRIBUTING.md) a la versión inglesa de 
   *  [Separar responsabilidades](#separar-responsabilidades)
   *  [Conexiones seguras requeridas](#conexiones-seguras-requeridas)
   *  [Versionado con la cabecera Accepts requerido](#versionado-con-la-cabecera-accepts-requerido)
-  *  [Soportar ETags para cacheado](#soportar-etags-para-cacheado)
+  *  [Soportar ETags para el cacheado](#soportar-etags-para-el-cacheado)
   *  [Proporcionar identificadores de petición para introspección](#Proporcionar-identificadores-de-petición-para-introspeccion)
   *  [Dividir respuestas largas en varias peticiones usando rangos](#dividir-respuestas-largas-en-varias-peticiones-usando-rangos)
 * [Peticiones](#peticiones)
@@ -74,12 +74,9 @@ Es mejor especificar la versión en las cabeeras, junto a otros metadatos, usand
 Accept: application/vnd.heroku+json; version=3
 ```
 
-#### Support ETags for Caching
+#### Soportar ETags para el cacheado
 
-Include an `ETag` header in all responses, identifying the specific
-version of the returned resource. This allows users to cache resources
-and use requests with this value in the `If-None-Match` header to determine
-if the cache should be updated.
+Incluye una cabecera `ETag` en todas las respuestas, identificando la versión específica del recurso retornado. Esto permite a los usuarios cachear recursos y usar peticiones con este valor en la cabecera `If-None-Match` para especificar si la caché debe ser actualizada.
 
 #### Provide Request-Ids for Introspection
 
