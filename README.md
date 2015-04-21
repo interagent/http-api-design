@@ -78,11 +78,9 @@ Accept: application/vnd.heroku+json; version=3
 
 Incluye una cabecera `ETag` en todas las respuestas, identificando la versión específica del recurso retornado. Esto permite a los usuarios cachear recursos y usar peticiones con este valor en la cabecera `If-None-Match` para especificar si la caché debe ser actualizada.
 
-#### Provide Request-Ids for Introspection
+#### Proporcionar identificadores de petición para introspección
 
-Include a `Request-Id` header in each API response, populated with a
-UUID value. By logging these values on the client, server and any backing
-services, it provides a mechanism to trace, diagnose and debug requests.
+Incluye una cabecear `Request-Id` en cada respuesta del API, junto con un valor UUID. _Logueando_ estos valores en el cliente, en el servidor y cualquier otro servicio de apoyo, se ofrece un mecanismo para _tracear_, diagnosticar y depurar las peticiones.
 
 #### Divide Large Responses Across Requests with Ranges
 
