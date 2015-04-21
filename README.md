@@ -62,18 +62,13 @@ Idealmente, rechaza cualquier petición sin TLS sin responder a peticiones HTTP 
 
 Las redirecciones están desaconsejadas ya que permiten a los clientes tener comportamientos incorrectos/chapuceros sin ofrecer ninguna ventaja clara. Los clientes que dependen de las redirecciones duplican el tráfico del servidor and hacen que el TLS sea inutil ya que la información sensible ya ha sido expuesta durante la primera llamada.
 
-#### Require Versioning in the Accepts Header
+#### Versionado con la cabecera Accepts requerido
 
-Versioning and the transition between versions can be one of the more
-challenging aspects of designing and operating an API. As such, it is best to
-start with some mechanisms in place to mitigate this from the start.
+El versionado y la transición entre versiones puede ser uno de los aspectos más difíciles en el diseño y mantenimiento de un API. Por eso, es mejor empezar con mecanismos para facilitarlo desde el principio.
 
-To prevent surprise, breaking changes to users, it is best to require a version
-be specified with all requests. Default versions should be avoided as they are
-very difficult, at best, to change in the future.
+Para evitar sorpresas, cambios incompatibles para los usuarios, es mejor que la versión sea requerida en todas las peticiones. Las versiones por defecto deben ser evitadas ya que, en el mejor de los casos, son muy difíciles de cambiar en el futuro.
 
-It is best to provide version specification in the headers, with other
-metadata, using the `Accept` header with a custom content type, e.g.:
+Es mejor especificar la versión en las cabeeras, junto a otros metadatos, usando la cabecera `Accept` junto con un _content type_ personalizado, por ejemplo:
 
 ```
 Accept: application/vnd.heroku+json; version=3
