@@ -142,11 +142,9 @@ Content-Type: application/json;charset=utf-8
 {}
 ```
 
-#### Accept serialized JSON in request bodies
+#### Aceptar JSON serializado en el cuerpo de las peticiones
 
-Accept serialized JSON on `PUT`/`PATCH`/`POST` request bodies, either
-instead of or in addition to form-encoded data. This creates symmetry
-with JSON-serialized response bodies, e.g.:
+Soporta JSON serializados en los cuerpos de las peticiones `PUT`/`PATCH`/`POST`, tanto en lugar de, como junto a datos de formularios HTML. Esto es equivalente a los cuerpos de las respuestas con JSON serializado, p.e.:
 
 ```bash
 $ curl -X POST https://service.com/apps \
