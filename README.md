@@ -111,12 +111,9 @@ Retorna códigos adecuados para ofrecer información adicional cuando ocurran er
 
 Consulta la [especificación de códigos de respuesta HTTP](https://tools.ietf.org/html/rfc7231#section-6) para una guía sobre los códigos de estado para errores de usuario o de servidor.
 
-#### Provide full resources where available
+#### Proporcionar recursos completos si están disponibles
 
-Provide the full resource representation (i.e. the object with all
-attributes) whenever possible in the response. Always provide the full
-resource on 200 and 201 responses, including `PUT`/`PATCH` and `DELETE`
-requests, e.g.:
+Incluye en la respuesta la representación completa del recurso (p.e. el objeto con todos sus atributos) siempre que sea posible. Siempre incluye el recurso completo en respuestas `200` y `201`, incluidas peticiones tipo `PUT`/`PATCH` y `DELETE`, p.e.:
 
 ```bash
 $ curl -X DELETE \  
@@ -133,8 +130,7 @@ Content-Type: application/json;charset=utf-8
 }
 ```
 
-202 responses will not include the full resource representation,
-e.g.:
+Las respuetas `202` no deben incluir la representaciín completa del recurso, p.e.:
 
 ```bash
 $ curl -X DELETE \  
