@@ -197,12 +197,9 @@ Para los atributos, utiliza también minúscular, pero usa guión bajo (_) para 
 service_class: "first"
 ```
 
-#### Support non-id dereferencing for convenience
+#### Soportar referencias por atributos no-identificadores como ayuda
 
-In some cases it may be inconvenient for end-users to provide IDs to
-identify a resource. For example, a user may think in terms of a Heroku
-app name, but that app may be identified by a UUID. In these cases you
-may want to accept both an id or name, e.g.:
+En algunos casos, puede ser conveniente para los usuarios finales ofrecer identificadores para acceder a recursos. Por ejemplo, un usuario puede pensar en los nombres de las apps en Heroku, pero una app puede estar identificada por un UUID. En estos casos, podrías aceptar tanto el identificador como el nombre, p.e.:
 
 ```bash
 $ curl https://service.com/apps/{app_id_or_name}
@@ -210,7 +207,7 @@ $ curl https://service.com/apps/97addcf0-c182
 $ curl https://service.com/apps/www-prod
 ```
 
-Do not accept only names to the exclusion of IDs.
+No aceptes sólo nombres omitiendo los identificadores.
 
 #### Minimize path nesting
 
