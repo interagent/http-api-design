@@ -182,18 +182,16 @@ p.e.
 /runs/{run_id}/actions/stop
 ```
 
-#### Downcase paths and attributes
+#### Utilizar minúsculas para rutas y atributos
 
-Use downcased and dash-separated path names, for alignment with
-hostnames, e.g:
+Usa nombres de rutas en minúsculas y separados por guión (-), para que sea igual que los nombres de dominio, p.e.:
 
 ```
 service-api.com/users
 service-api.com/app-setups
 ```
 
-Downcase attributes as well, but use underscore separators so that
-attribute names can be typed without quotes in JavaScript, e.g.:
+Para los atributos, utiliza también minúscular, pero usa guión bajo (_) para que los nombres de atributos puedan ser tecleados sin comillas en JavaScript, p.e.:
 
 ```
 service_class: "first"
