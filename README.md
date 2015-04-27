@@ -33,7 +33,7 @@ Agradecemos también [contribuciones](CONTRIBUTING.md) a la versión inglesa de 
 * [Respuestas](#respuestas)
   *  [Proporcionar identificadores únicos (UUIDs) de recursos](#proporcionar-identificadores-unicos-uuids-de-recursos)
   *  [Proporcionar fechas y horas (timestamps) estándar](#proporcionar-fechas-y-horas-timestamps-estandar)
-  *  [Usar horas en UTC formateadas usando ISO8601](#usar-horas-en-utc-formateadas-usando-ISO8601)
+  *  [Usar horas en UTC con formato ISO8601](#usar-horas-en-utc-con-formato-ISO8601)
   *  [Anidar relaciones de clave foránea](#anidar-relaciones-de-clave-foranea)
   *  [Generar errores estructurados](#generar-errores-estructurados)
   *  [Mostrar el estado del límite de peticiones](#mostrar-el-estado-del-limite-de-peticiones)
@@ -227,25 +227,21 @@ Limita el anidamiento excesivo poniendo recursos en el raíz de la ruta. Usa ani
 /dynos/{dyno_id}
 ```
 
-### Responses
+### Respuestas
 
-#### Provide resource (UU)IDs
+#### Proporcionar identificadores únicos (UUIDs) de recursos
 
-Give each resource an `id` attribute by default. Use UUIDs unless you
-have a very good reason not to. Don’t use IDs that won’t be globally
-unique across instances of the service or other resources in the
-service, especially auto-incrementing IDs.
+Dale a cada recurso un atributo `id` por defecto. Usa Identificadores Únicos Universaeles (UUIDs) excepto si tienes una buena razón para no hacerlo. No uses identificadores que no son únicos entre instancias del servicio o con otros recursos del servicio, especialmente identificadores auto-incrementales.
 
-Render UUIDs in downcased `8-4-4-4-12` format, e.g.:
+Presenta los UUIDs en minusculas, en formato `8-4-4-4-12`, p.e.:
 
 ```
 "id": "01234567-89ab-cdef-0123-456789abcdef"
 ```
 
-#### Provide standard timestamps
+#### Proporcionar fechas y horas (timestamps) estándar
 
-Provide `created_at` and `updated_at` timestamps for resources by default,
-e.g:
+Por defecto, incluye atributos de fecha-hora `created_at` y `updated_at` en tus recursos, p.e.:
 
 ```javascript
 {
@@ -256,21 +252,19 @@ e.g:
 }
 ```
 
-These timestamps may not make sense for some resources, in which case
-they can be omitted.
+Estas fechas/horas podrían no tener sentido en algunos recursos, en cuyo caso pueden ser omitidos.
 
-#### Use UTC times formatted in ISO8601
+#### Usar horas en UTC con formato ISO8601
 
-Accept and return times in UTC only. Render times in ISO8601 format,
-e.g.:
+Acepta y retorna fechas y horas sólo en formato UTC. Presenta las fechas utilizando el formato ISO8601, p.e.:
 
 ```
 "finished_at": "2012-01-01T12:00:00Z"
 ```
 
-#### Nest foreign key relations
+#### Anidar relaciones de clave foránea
 
-Serialize foreign key references with a nested object, e.g.:
+Serializa las relaciones de clave foránea usando objetos anidados, p.e.:
 
 ```javascript
 {
@@ -282,7 +276,7 @@ Serialize foreign key references with a nested object, e.g.:
 }
 ```
 
-Instead of e.g.:
+En lugar de, p.e.:
 
 ```javascript
 {
@@ -292,9 +286,7 @@ Instead of e.g.:
 }
 ```
 
-This approach makes it possible to inline more information about the
-related resource without having to change the structure of the response
-or introduce more top-level response fields, e.g.:
+Este enfoque hace posible incluir más información del recurso relacionado sin tener que cambiar la estructura de la respuesta o introducir más atributos de primer nivel, p.e.:
 
 ```javascript
 {
@@ -308,18 +300,13 @@ or introduce more top-level response fields, e.g.:
 }
 ```
 
-#### Generate structured errors
+#### Generar errores estructurados
 
-Generate consistent, structured response bodies on errors. Include a
-machine-readable error `id`, a human-readable error `message`, and
-optionally a `url` pointing the client to further information about the
-error and how to resolve it, e.g.:
+En caso de error, genera cuerpos de respuesta consistentes y estructurados. Incluye identificadores de error para su procesado, mensajes error para usuarios y, opcionalmente, una `url` para que el cliente pueda obtener más información sobre el error y sobre cómo resolverlo, p.e.:
 
 ```
 HTTP/1.1 429 Too Many Requests
-```
 
-```json
 {
   "id":      "rate_limit",
   "message": "Account reached its API rate limit.",
@@ -327,24 +314,18 @@ HTTP/1.1 429 Too Many Requests
 }
 ```
 
-Document your error format and the possible error `id`s that clients may
-encounter.
+Documenta tu formato de error y los identificadores de error que los clientes pueden recibir.
 
-#### Show rate limit status
+#### Mostrar el estado del límite de peticiones
 
-Rate limit requests from clients to protect the health of the service
-and maintain high service quality for other clients. You can use a
-[token bucket algorithm](http://en.wikipedia.org/wiki/Token_bucket) to
-quantify request limits.
+Limita el consumo de las peticiones de los clientes para asegurar la salud de tu servicio y para mantener un nivel de calidad alto para otros clientes.  Puedes usar un algoritmo como [token bucket](http://en.wikipedia.org/wiki/Token_bucket) para calcular los límites de las peticiones.
 
-Return the remaining number of request tokens with each request in the
-`RateLimit-Remaining` response header.
+Retorna el número de peticiones restantes en la cabecera de respuesta
+`RateLimit-Remaining`.
 
-#### Keep JSON minified in all responses
+#### Mantener los JSON minificados en todas las respuestas
 
-Extra whitespace adds needless response size to requests, and many
-clients for human consumption will automatically "prettify" JSON
-output. It is best to keep JSON responses minified e.g.:
+Los espacios extra incrementan innecesariamente el tamaño de las respuestas y muchos clientes para desarrolladores "maquillarán" (_N.T. prettify_) las respuestas JSON automaticamente. Así que es mejor que las respuestas JSON estén minificadas, p.e.:
 
 ```json
 {"beta":false,"email":"alice@heroku.com","id":"01234567-89ab-cdef-0123-456789abcdef","last_login":"2012-01-01T12:00:00Z","created_at":"2012-01-01T12:00:00Z","updated_at":"2012-01-01T12:00:00Z"}
@@ -363,9 +344,7 @@ Instead of e.g.:
 }
 ```
 
-You may consider optionally providing a way for clients to retrieve 
-more verbose response, either via a query parameter (e.g. `?pretty=true`)
-or via an `Accept` header param (e.g.
+Podrías ofrecer un método opcional para que los clientes recuperen respuestas más completas, ya sea a través de un parámetro (p.e. `?pretty=true`) o en la cabecera `Accept` (p.e.
 `Accept: application/vnd.heroku+json; version=3; indent=4;`).
 
 ### Artifacts
