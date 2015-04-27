@@ -347,64 +347,54 @@ Instead of e.g.:
 Podrías ofrecer un método opcional para que los clientes recuperen respuestas más completas, ya sea a través de un parámetro (p.e. `?pretty=true`) o en la cabecera `Accept` (p.e.
 `Accept: application/vnd.heroku+json; version=3; indent=4;`).
 
-### Artifacts
+### Artefactos
 
-#### Provide machine-readable JSON schema
+#### Proporcionar un esquema de JSON procesable
 
-Provide a machine-readable schema to exactly specify your API. Use
-[prmd](https://github.com/interagent/prmd) to manage your schema, and ensure
-it validates with `prmd verify`.
+Proporciona un esquema procesable (_machine-readable_) para especificar con exactitud el uso de tu API. Usa [prmd](https://github.com/interagent/prmd) para gestionar tu esquema, y asegúrate que es válido usando `prmd verify`.
 
-#### Provide human-readable docs
+#### Proporcionar docmentación para desarrolladores
 
-Provide human-readable documentation that client developers can use to
-understand your API.
+Proporciona una documentación para los desarrolladores puedan usar para entender tu API.
 
-If you create a schema with prmd as described above, you can easily
-generate Markdown docs for all endpoints with with `prmd doc`.
+Si creas un esquema con `prmd` como hemos dicho antes, puedes generar fácilmente documentos Markdown para todos tus servicios (_endpoints_) usando `prmd doc`.
 
-In addition to endpoint details, provide an API overview with
-information about:
+Además de los detalles de los servicios, ofrece un resumen de tu API con información sobre:
 
-* Authentication, including acquiring and using authentication tokens.
-* API stability and versioning, including how to select the desired API
-  version.
-* Common request and response headers.
-* Error serialization format.
-* Examples of using the API with clients in different languages.
+* Autenticacaión, incluyendo obtención y uso de tokens de autenticación.
+* Estabilidad y versionado del API, incluyendo cómo usar una versión específica del API.
+* Cabeceras de petición y respuesta genéricas.
+* Formato de respuestas de error.
+* Ejemplos de uso del API con clientes en distintos lenguajes.
 
-#### Provide executable examples
+#### Proporcionar ejemplos ejecutables
+
+Ofrece ejemplos ejecutables que los usuarios puedan probar directamente en sus terminales para ver las llamadas al API en funcionamiento.
 
 Provide executable examples that users can type directly into their
-terminals to see working API calls. To the greatest extent possible,
-these examples should be usable verbatim, to minimize the amount of
-work a user needs to do to try the API, e.g.:
+terminals to see working API calls. En la medida de lo posible, estos ejemplos deben ser utilizables tal cual, para minimizar la cantidad de trabajo necesario para probar el API, p.e.:
 
 ```bash
 $ export TOKEN=... # acquire from dashboard
 $ curl -is https://$TOKEN@service.com/users
 ```
 
-If you use [prmd](https://github.com/interagent/prmd) to generate Markdown
-docs, you will get examples for each endpoint for free.
+Si usas [prmd](https://github.com/interagent/prmd) para generar documentación en Markdown, tendrás ejemplos para cada servicio sin esfuerzo.
 
-#### Describe stability
+#### Describir la estabilidad
 
-Describe the stability of your API or its various endpoints according to
-its maturity and stability, e.g. with prototype/development/production
-flags.
+Describe la estabilidad de tu API o sus servicios en función de su madurez y estabilidad, por ejemplo con etiquetas prototipo/desarrollo/producción.
 
-See the [Heroku API compatibility policy](https://devcenter.heroku.com/articles/api-compatibility-policy)
-for a possible stability and change management approach.
+Ver la [política de compatibilidad del API de Heroku](https://devcenter.heroku.com/articles/api-compatibility-policy)
+para ver un posible enfoque de estabilidad y gestión del cambio.
 
-Once your API is declared production-ready and stable, do not make
-backwards incompatible changes within that API version. If you need to
-make backwards-incompatible changes, create a new API with an
-incremented version number.
+Una vez que tu API está declarada como lista para producción y estable, no hagas cambios incompatibles en una misma versión del API. Si necesitas hacer cambios incompatibles, crea una nueva API con un número de versión superior.
 
 
-### Translations
- * [Korean version](https://github.com/yoondo/http-api-design) (based on [f38dba6](https://github.com/interagent/http-api-design/commit/f38dba6fd8e2b229ab3f09cd84a8828987188863)), by [@yoondo](https://github.com/yoondo/)
- * [Simplified Chinese version](https://github.com/ZhangBohan/http-api-design-ZH_CN) (based on [337c4a0](https://github.com/interagent/http-api-design/commit/337c4a05ad08f25c5e232a72638f063925f3228a)), by [@ZhangBohan](https://github.com/ZhangBohan/)
- * [Traditional Chinese version](https://github.com/kcyeu/http-api-design) (based on [232f8dc](https://github.com/interagent/http-api-design/commit/232f8dc6a941d0b25136bf64998242dae5575f66)), by [@kcyeu](https://github.com/kcyeu/)
+### Traducciones
+
+ * [Versión original (inglés)](https://github.com/interagent/http-api-design/commit/2a74f45b9afaf6c951352f36c3a4e1b0418ed10b)
+ * [Versión en coreano](https://github.com/yoondo/http-api-design) (a partir de [f38dba6](https://github.com/interagent/http-api-design/commit/f38dba6fd8e2b229ab3f09cd84a8828987188863)), realizada por [@yoondo](https://github.com/yoondo/)
+ * [Versión en chino simplificado](https://github.com/ZhangBohan/http-api-design-ZH_CN) (a partir de [337c4a0](https://github.com/interagent/http-api-design/commit/337c4a05ad08f25c5e232a72638f063925f3228a)), realizada por [@ZhangBohan](https://github.com/ZhangBohan/)
+ * [Versión en chino traducional](https://github.com/kcyeu/http-api-design) (a partir de [232f8dc](https://github.com/interagent/http-api-design/commit/232f8dc6a941d0b25136bf64998242dae5575f66)), realizada por [@kcyeu](https://github.com/kcyeu/)
 
