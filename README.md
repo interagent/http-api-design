@@ -209,18 +209,15 @@ $ curl https://service.com/apps/www-prod
 
 No aceptes sólo nombres omitiendo los identificadores.
 
-#### Minimize path nesting
+#### Minimizar anidado de rutas
 
-In data models with nested parent/child resource relationships, paths
-may become deeply nested, e.g.:
+En modelos de datos con relaciones entre recursos padre/hijo, las rutas pueden acabar estando muy anidadas, p.e.:
 
 ```
 /orgs/{org_id}/apps/{app_id}/dynos/{dyno_id}
 ```
 
-Limit nesting depth by preferring to locate resources at the root
-path. Use nesting to indicate scoped collections. For example, for the
-case above where a dyno belongs to an app belongs to an org:
+Limita el anidamiento excesivo poniendo recursos en el raíz de la ruta. Usa anidado para indicar colecciones. Por ejemplo, para el caso anterior en que un _dyno_ pertenece a una app, que pertenece a una organización:
 
 ```
 /orgs/{org_id}
