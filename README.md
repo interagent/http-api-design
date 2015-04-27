@@ -86,37 +86,30 @@ Incluye una cabecear `Request-Id` en cada respuesta del API, junto con un valor 
 
 Las respuestas largas deben ser troceadas en múltiples peticiones usando la cabecera `Range` para especificar cuando están disponibles más datos y cómo recuperarlos. Consulta en [el debate sobre rangos (en inglés)](https://devcenter.heroku.com/articles/platform-api-reference#ranges) los detalles sobre las cabeceras de las peticiones y respuestas, los códigos de estado, límites, ordenación e iteración.
 
-### Requests
+### Peticiones
 
-#### Return appropriate status codes
+#### Retornar códigos de estado apropiados
 
-Return appropriate HTTP status codes with each response. Successful
-responses should be coded according to this guide:
+Retorna códigos de estado HTTP apropiados para cada respuesta. Las respuetas con éxito deben retornar códigos según la siguiente guía:
 
-* `200`: Request succeeded for a `GET` call, for a `DELETE` or
-  `PATCH` call that completed synchronously, or for a `PUT` call that
-  synchronously updated an existing resource
-* `201`: Request succeeded for a `POST` call that completed
-  synchronously, or for a `PUT` call that synchronously created a new
-  resource
-* `202`: Request accepted for a `POST`, `PUT`, `DELETE`, or `PATCH` call that
-  will be processed asynchronously
-* `206`: Request succeeded on `GET`, but only a partial response
-  returned: see [above on ranges](#divide-large-responses-across-requests-with-ranges)
+* `200`: Petición exitosa para una llamada `GET`, `DELETE` o
+  `PATCH` que se completó de forma síncrona, o para una llamada `PUT` que actualizó un recurso existente de forma síncrona.
+* `201`: Petición exitosa para una llamada `POST` que se completó de forma síncrona, o para una llamada `PUT` que creó un nuevo recurso de forma síncrona.
+* `202`: Petición aceptada para una llamada `POST`, `PUT`, `DELETE`, o `PATCH` que será procesada de forma asíncrona.
+* `206`: Petición exitosa para una llamada `GET`, pero que sólo retorna una respuesta parcial: ver [sección sobre respuestas largas](#dividir-respuestas-largas-en-varias-peticiones-usando-rangos).
 
-Pay attention to the use of authentication and authorization error codes:
+Presta atención al uso de código de error de autenticación y autorización:
 
-* `401 Unauthorized`: Request failed because user is not authenticated
-* `403 Forbidden`: Request failed because user does not have authorization to access a specific resource
+* `401 Unauthorized`: Petición fallida porque el usuario no está autenticado.
+* `403 Forbidden`: Petición fallida porque el usuario no tiene autorización para acceder al un recurso en concreto.
 
-Return suitable codes to provide additional information when there are errors:
+Retorna códigos adecuados para ofrecer información adicional cuando ocurran errores:
 
-* `422 Unprocessable Entity`: Your request was understood, but contained invalid parameters
-* `429 Too Many Requests`: You have been rate-limited, retry later
-* `500 Internal Server Error`: Something went wrong on the server, check status site and/or report the issue
+* `422 Unprocessable Entity`: Tu petición es correcta, pero contiene parámetros inválidos.
+* `429 Too Many Requests`: Has superado el límite de consumo. Inténtalo de nuevo más tarde.
+* `500 Internal Server Error`: Algo falló en el servidor. Comprueba el estado del sitio y/o reporta la incidencia.
 
-Refer to the [HTTP response code spec](https://tools.ietf.org/html/rfc7231#section-6)
-for guidance on status codes for user error and server error cases.
+Consulta la [especificación de códigos de respuesta HTTP](https://tools.ietf.org/html/rfc7231#section-6) para una guía sobre los códigos de estado para errores de usuario o de servidor.
 
 #### Provide full resources where available
 
