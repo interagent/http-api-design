@@ -162,23 +162,21 @@ $ curl -X POST https://service.com/apps \
 }
 ```
 
-#### Use consistent path formats
+#### Usar formatos de ruta consistentes
 
-##### Resource names
+##### Nombre de recurso
 
-Use the plural version of a resource name unless the resource in question is a singleton within the system (for example, in most systems a given user would only ever have one account). This keeps it consistent in the way you refer to particular resources.
+Usa nombres de recurso en plural excepto si el recurso que estás nombrando es único (_N.T. singleton_) en el sistema (por ejemplo, en la mayoría de los sistemas un usuario dado sólo puede tener una cuenta). Esto permite que la forma de acceder a un recurso en particular sea consistente.
 
-##### Actions
+##### Acciones
 
-Prefer endpoint layouts that don’t need any special actions for
-individual resources. In cases where special actions are needed, place
-them under a standard `actions` prefix, to clearly delineate them:
+Son preferibles esquemas de llamada (_N.T. endpoint layouts_) que no necesiten ninguna acción especial para recursos individuales. En aquellos casos donde se necesitan acciones especiales, ponlas tras el prefijo estándar `actions`, para diferenciarlas claramente:
 
 ```
 /resources/:resource/actions/:action
 ```
 
-e.g.
+p.e.
 
 ```
 /runs/{run_id}/actions/stop
