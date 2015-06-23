@@ -18,6 +18,8 @@ way_.
 We assume you’re familiar with the basics of HTTP+JSON APIs and won’t
 cover all of the fundamentals of those in this guide.
 
+This guide is referred in all public and private Pull Requests / code reviews.
+
 ## Contents
 
 * [Foundations](#foundations)
