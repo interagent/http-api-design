@@ -1,13 +1,14 @@
-# HTTP API Design Guide
+# Gild Platform - HTTP API Design Guide
 
 ## Introduction
 
-This guide describes a set of HTTP+JSON API design practices, originally
-extracted from work on the [Heroku Platform API](https://devcenter.heroku.com/articles/platform-api-reference).
+This guide describes a set of HTTP+JSON API design practices used in 
+the development of the [Gild Platform API](https://api.gild.com/). 
+The guide is based on the work of [http-api-design](https://github.com/interagent/http-api-design) 
+and [JSON API](http://jsonapi.org/format/).
 
 This guide informs additions to that API and also guides new internal
-APIs at Heroku. We hope it’s also of interest to API designers
-outside of Heroku.
+APIs at Gild.
 
 Our goals here are consistency and focusing on business logic while
 avoiding design bikeshedding. We’re looking for _a good, consistent,
@@ -16,8 +17,6 @@ way_.
 
 We assume you’re familiar with the basics of HTTP+JSON APIs and won’t
 cover all of the fundamentals of those in this guide.
-
-We welcome [contributions](CONTRIBUTING.md) to this guide.
 
 ## Contents
 
