@@ -110,9 +110,8 @@ ordering, and iteration.
 
 #### Accept serialized JSON in request bodies
 
-The Gild API accepts serialized JSON on `PUT`/`PATCH`/`POST` request bodies, either
-instead of or in addition to form-encoded data. This creates symmetry
-with JSON-serialized response bodies, e.g.:
+The Gild API accepts serialized JSON on `PUT`/`PATCH`/`POST` request bodies. 
+This creates symmetry with JSON-serialized response bodies, e.g.:
 
 ```bash
 $ curl -X POST https://service.com/apps \
