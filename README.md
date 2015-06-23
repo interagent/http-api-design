@@ -50,16 +50,16 @@ This guide is referred in all public and private Pull Requests / code reviews.
 
 #### Separate Concerns
 
-Keep things simple while designing by separating the concerns between the
+We want to keep things simple by separating the concerns between the
 different parts of the request and response cycle. Keeping simple rules here
 allows for greater focus on larger and harder problems.
 
 Requests and responses will be made to address a particular resource or
-collection. Use:
+collection. We are using:
  
  * the path to indicate identity
  * the body to transfer the contents
- * headers to communicate metadata. 
+ * headers to communicate metadata
 
 #### Require Secure Connections
 
