@@ -87,14 +87,14 @@ For example:
 #### Support ETags for Caching
 
 [TODO](https://github.com/snowyu/rest_service/wiki/ETags-in-Grape) 
-We include an `ETag` header in all responses, identifying the specific
+The Gild API includes an `ETag` header in all responses, identifying the specific
 version of the returned resource. This allows users to cache resources
 and use requests with this value in the `If-None-Match` header to determine
 if the cache should be updated.
 
 #### Provide Request-Ids for Introspection
 
-We include a `X-Request-Id` header in each API response, populated with a
+The Gild API includes a `X-Request-Id` header in each API response, populated with a
 UUID value. By logging these values on the client, server and any backing
 services, we provides a mechanism to trace, diagnose and debug requests.
 
@@ -110,7 +110,7 @@ ordering, and iteration.
 
 #### Accept serialized JSON in request bodies
 
-Accept serialized JSON on `PUT`/`PATCH`/`POST` request bodies, either
+The Gild API accepts serialized JSON on `PUT`/`PATCH`/`POST` request bodies, either
 instead of or in addition to form-encoded data. This creates symmetry
 with JSON-serialized response bodies, e.g.:
 
