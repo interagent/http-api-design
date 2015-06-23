@@ -7,13 +7,7 @@ the development of the [Gild Platform API](https://api.gild.com/).
 The guide is based on the work of [http-api-design](https://github.com/interagent/http-api-design) 
 and [JSON API](http://jsonapi.org/format/).
 
-This guide informs additions to that API and also guides new internal
-APIs at Gild.
-
-Our goals here are consistency and focusing on business logic while
-avoiding design bikeshedding. We’re looking for _a good, consistent,
-well-documented way_ to design APIs, not necessarily _the only/ideal
-way_.
+This guide informs additions to that API and also guides new internal APIs at Gild.
 
 We assume you’re familiar with the basics of HTTP+JSON APIs and won’t
 cover all of the fundamentals of those in this guide.
