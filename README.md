@@ -19,7 +19,7 @@ This guide is referred in all public and private Pull Requests / code reviews.
 * [Foundations](#foundations)
   *  [Separate Concerns](#separate-concerns)
   *  [Require Secure Connections](#require-secure-connections)
-  *  [Require Versioning in the Accepts Header](#require-versioning-in-the-accepts-header)
+  *  [Require Versioning in the Accepts Header](#require-api-versioning-in-path)
   *  [Support ETags for Caching](#support-etags-for-caching)
   *  [Provide Request-Ids for Introspection](#provide-request-ids-for-introspection)
   *  [Divide Large Responses Across Requests with Ranges](#divide-large-responses-across-requests-with-ranges)
@@ -70,22 +70,19 @@ and when it’s not, so we just require TLS for everything.
 **[TODO]** We reject any non-TLS requests by not responding to requests for
 http or port 80 to avoid any insecure data exchange.
 
-#### Require Versioning in the Accepts Header
+#### Require API Versioning in path
 
 Versioning and the transition between versions can be one of the more
-challenging aspects of designing and operating an API. As such, it is best to
-start with some mechanisms in place to mitigate this from the start.
+challenging aspects of designing and operating an API. As such, we want to address
+this from the start, by including the API version as part of the API identity (i.e. path).
 
-To prevent surprise, breaking changes to users, it is best to require a version
-be specified with all requests. Default versions should be avoided as they are
-very difficult, at best, to change in the future.
+Each API method is prefixed with the version of the API it refers to.
 
-It is best to provide version specification in the headers, with other
-metadata, using the `Accept` header with a custom content type, e.g.:
+For example:
 
-```
-Accept: application/vnd.heroku+json; version=3
-```
+    .../v1/resources/:id
+    
+    .../v2/interviews/
 
 #### Support ETags for Caching
 
