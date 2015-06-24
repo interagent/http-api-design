@@ -21,7 +21,7 @@ This guide is referred in all public and private Pull Requests / code reviews.
   *  [Require Secure Connections](#require-secure-connections)
   *  [Require Versioning in the Accepts Header](#require-api-versioning-in-path)
   *  [Deprecation policy](#deprecation-policy)
-  *  [Provide Request-Ids for Introspection](#provide-request-ids-for-introspection)
+  *  [X-Request-Ids Header for Introspection](#x-request-ids-header-for-introspection)
 * [Requests](#requests)
   *  [Accept serialized JSON in request bodies](#accept-serialized-json-in-request-bodies)
   *  [Consistent path formats](#consistent-path-formats)
@@ -91,7 +91,7 @@ When a method or an endpoint gets deprecated, the old method or endpoint will be
 deprecation notice - unless the change is introduced as response to a security concern, where the safety of the data
 prevents us to give a more extended notice.
 
-#### Provide Request-Ids for Introspection
+#### X-Request-Ids Header for Introspection
 
 The Gild API includes a `X-Request-Id` header in each API response, populated with a
 UUID value. By logging these values on the client, server and any backing
