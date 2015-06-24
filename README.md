@@ -30,7 +30,7 @@ This guide is referred in all public and private Pull Requests / code reviews.
     *  [Support non-id dereferencing for convenience](#support-non-id-dereferencing-for-convenience)
     *  [Minimize path nesting](#minimize-path-nesting)
 * [Responses](#responses)
-  *  [Return appropriate status codes](#return-appropriate-status-codes)
+  *  [Status codes](#status-codes)
   *  [Provide full resources where available](#provide-full-resources-where-available)
   *  [Provide resource (UU)IDs](#provide-resource-uuids)
   *  [Provide standard timestamps](#provide-standard-timestamps)
@@ -205,10 +205,11 @@ For example, for the case above where a profile belongs to a job that belongs to
 
 ### Responses
 
-#### Return appropriate status codes
+#### Status codes
 
-Return appropriate HTTP status codes with each response. Successful
-responses should be coded according to this guide:
+The Gild API returns an appropriate HTTP status codes with each response. 
+
+Successful responses are handled according to this guide:
 
 * `200`: Request succeeded for a `GET` call, for a `DELETE` or
   `PATCH` call that completed synchronously, or for a `PUT` call that
@@ -221,19 +222,16 @@ responses should be coded according to this guide:
 * `206`: Request succeeded on `GET`, but only a partial response
   returned: see [above on ranges](#divide-large-responses-across-requests-with-ranges)
 
-Pay attention to the use of authentication and authorization error codes:
+Authentication or authorization failures are signalled by:
 
 * `401 Unauthorized`: Request failed because user is not authenticated
 * `403 Forbidden`: Request failed because user does not have authorization to access a specific resource
 
-Return suitable codes to provide additional information when there are errors:
+Other failures are handled by the following HTTP status codes:
 
 * `422 Unprocessable Entity`: Your request was understood, but contained invalid parameters
 * `429 Too Many Requests`: You have been rate-limited, retry later
 * `500 Internal Server Error`: Something went wrong on the server, check status site and/or report the issue
-
-Refer to the [HTTP response code spec](https://tools.ietf.org/html/rfc7231#section-6)
-for guidance on status codes for user error and server error cases.
 
 #### Provide full resources where available
 
