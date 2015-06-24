@@ -17,7 +17,7 @@ This guide is referred in all public and private Pull Requests / code reviews.
 ## Contents
 
 * [Foundations](#foundations)
-  *  [Separate Concerns](#separate-concerns)
+  *  [Separated Concerns](#separated-concerns)
   *  [Require Secure Connections](#require-secure-connections)
   *  [Require Versioning in the Accepts Header](#require-api-versioning-in-path)
   *  [Support ETags for Caching](#support-etags-for-caching)
@@ -40,7 +40,7 @@ This guide is referred in all public and private Pull Requests / code reviews.
 
 ### Foundations
 
-#### Separate Concerns
+#### Separated Concerns
 
 We want to keep things simple by separating the concerns between the
 different parts of the request and response cycle. Keeping simple rules here
@@ -59,7 +59,7 @@ We require secure connections with TLS to access the API, without any exception.
 It’s not worth trying to figure out or explain when it is OK to use TLS
 and when it’s not, so we just require TLS for everything.
 
-**[TODO]** We reject any non-TLS requests by not responding to requests for
+**[TODO](https://github.com/Gild/gild-api/issues/1)** We reject any non-TLS requests by not responding to requests for
 http or port 80 to avoid any insecure data exchange.
 
 #### Require API Versioning in path
@@ -75,6 +75,21 @@ For example:
     .../v1/resources/:id
     
     .../v2/interviews/
+
+#### Deprecation policy
+
+Individual API methods and entire endpoints can be deprecated in favor of new or alternative endpoints.
+Most of the changes are due to more solid or better way to access the same data - for example for consistency
+or to favor API client patterns. 
+
+When that happens we notify the change on [the deprecation manifest](https://github.com/Gild/gild-api/blob/master/README.md) 
+as well as on the API documentation and the [Hiring Success mailing list](https://groups.google.com/forum/#!forum/hiring_success).
+
+You can check the [migration guidelines](https://github.com/Gild/gild-api/blob/master/migration.md) too.
+    
+When a method or an endpoint gets deprecated, the old method or endpoint will be still supported for 120 days after the 
+deprecation notice - unless the change is introduced as response to a security concern, where the safety of the data
+prevents us to give a more extended notice.
 
 #### Support ETags for Caching
 
