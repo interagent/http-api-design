@@ -17,9 +17,10 @@ This guide is referred in all public and private Pull Requests / code reviews.
 ## Contents
 
 * [Foundations](#foundations)
-  *  [Separated Concerns](#separated-concerns)
+  *  [Separation of Concerns](#separation-of-concerns)
   *  [Require Secure Connections](#require-secure-connections)
   *  [Require Versioning in the Accepts Header](#require-api-versioning-in-path)
+  *  [Deprecation policy](#deprecation-policy)
   *  [Support ETags for Caching](#support-etags-for-caching)
   *  [Provide Request-Ids for Introspection](#provide-request-ids-for-introspection)
 * [Requests](#requests)
@@ -40,7 +41,7 @@ This guide is referred in all public and private Pull Requests / code reviews.
 
 ### Foundations
 
-#### Separated Concerns
+#### Separation of Concerns
 
 We want to keep things simple by separating the concerns between the
 different parts of the request and response cycle. Keeping simple rules here
