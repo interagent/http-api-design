@@ -138,9 +138,9 @@ This keeps it consistent in the way as an API client you refer to particular res
 
 ##### Actions
 
-Prefer endpoint layouts that don’t need any special actions for
-individual resources. In cases where special actions are needed, place
-them under a standard `actions` prefix, to clearly delineate them:
+The Gild API is structured with endpoint layouts that don’t need any special actions for
+individual resources. In cases where special actions are needed, they are placed under a standard `actions` prefix, 
+to clearly delineate them:
 
 ```
 /resources/:resource/actions/:action
@@ -149,7 +149,7 @@ them under a standard `actions` prefix, to clearly delineate them:
 e.g.
 
 ```
-/runs/{run_id}/actions/stop
+/interviews/{inteview_id}/actions/stop
 ```
 
 #### Downcase paths and attributes
