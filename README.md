@@ -24,12 +24,14 @@ This guide is referred in all public and private Pull Requests / code reviews.
   *  [X-Request-Ids Header for Introspection](#x-request-ids-header-for-introspection)
 * [Requests](#requests)
   *  [Accept serialized JSON in request bodies](#accept-serialized-json-in-request-bodies)
+  *  [Request Content Types](#request-content-types)
   *  [Consistent path formats](#consistent-path-formats)
     *  [Downcase paths and attributes](#downcase-paths-and-attributes)
     *  [Support non-id dereferencing for convenience](#support-non-id-dereferencing-for-convenience)
     *  [Minimize path nesting](#minimize-path-nesting)
 * [Responses](#responses)
   *  [Status codes](#status-codes)
+  *  [Response Content Types](#response-content-types)
   *  [Full resources where available](#full-resources-where-available)
   *  [Resource (UU)IDs](#resource-uuids)
   *  [Standard timestamps](#standard-timestamps)
@@ -119,6 +121,13 @@ $ curl -X POST https://service.com/apps \
   ...
 }
 ```
+
+#### Request Content Types
+
+The Gild API support the following content types in API requests:
+
+* application/json
+* application/x-www-form-urlencoded
 
 #### Consistent path formats
 
@@ -223,6 +232,13 @@ Other failures are handled by the following HTTP status codes:
 * `422 Unprocessable Entity`: Your request was understood, but contained invalid parameters
 * `429 Too Many Requests`: You have been rate-limited, retry later
 * `500 Internal Server Error`: Something went wrong on the server, check status site and/or report the issue
+
+#### Response Content Types
+
+The Gild API support the following content types as API response:
+
+* application/json
+* text/xml
 
 #### Full resources where available
 
