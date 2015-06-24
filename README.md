@@ -25,7 +25,7 @@ This guide is referred in all public and private Pull Requests / code reviews.
   *  [Divide Large Responses Across Requests with Ranges](#divide-large-responses-across-requests-with-ranges)
 * [Requests](#requests)
   *  [Accept serialized JSON in request bodies](#accept-serialized-json-in-request-bodies)
-  *  [Use consistent path formats](#use-consistent-path-formats)
+  *  [Consistent path formats](#consistent-path-formats)
     *  [Downcase paths and attributes](#downcase-paths-and-attributes)
     *  [Support non-id dereferencing for convenience](#support-non-id-dereferencing-for-convenience)
     *  [Minimize path nesting](#minimize-path-nesting)
@@ -129,11 +129,12 @@ $ curl -X POST https://service.com/apps \
 }
 ```
 
-#### Use consistent path formats
+#### Consistent path formats
 
 ##### Resource names
 
-Use the plural version of a resource name unless the resource in question is a singleton within the system (for example, in most systems a given user would only ever have one account). This keeps it consistent in the way you refer to particular resources.
+Resource names are in plural version unless the resource in question is a singleton within the system. 
+This keeps it consistent in the way as an API client you refer to particular resources.
 
 ##### Actions
 
