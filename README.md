@@ -37,13 +37,7 @@ This guide is referred in all public and private Pull Requests / code reviews.
   *  [UTC times formatted in ISO8601](#utc-times-formatted-in-iso8601)
   *  [Nested foreign key relations](#nested-foreign-key-relations)
   *  [Show rate limit status](#show-rate-limit-status)
-  *  [Keep JSON minified in all responses](#keep-json-minified-in-all-responses)
-* [Artifacts](#artifacts)
-  *  [Provide machine-readable JSON schema](#provide-machine-readable-json-schema)
-  *  [Provide human-readable docs](#provide-human-readable-docs)
-  *  [Provide executable examples](#provide-executable-examples)
-  *  [Describe stability](#describe-stability)
-* [Translations](#translations)
+  *  [JSON minified in all responses](#json-minified-in-all-responses)
 
 ### Foundations
 
@@ -343,21 +337,19 @@ or introduce more top-level response fields, e.g.:
 }
 ```
 
-#### Show rate limit status
+#### Rate limit status
 
-Rate limit requests from clients to protect the health of the service
-and maintain high service quality for other clients. You can use a
-[token bucket algorithm](http://en.wikipedia.org/wiki/Token_bucket) to
-quantify request limits.
+The Gild API has a rate limit for requests from clients to protect the health of the service
+and maintain high service quality for other clients. 
 
-Return the remaining number of request tokens with each request in the
-`RateLimit-Remaining` response header.
+The API returns the remaining number of request tokens with each request in the
+`X-RateLimit-Remaining` response header.
 
-#### Keep JSON minified in all responses
+#### JSON minified format
 
 Extra whitespace adds needless response size to requests, and many
 clients for human consumption will automatically "prettify" JSON
-output. It is best to keep JSON responses minified e.g.:
+output. For this reason the Gild API response is minified e.g.:
 
 ```json
 {"beta":false,"email":"alice@heroku.com","id":"01234567-89ab-cdef-0123-456789abcdef","last_login":"2012-01-01T12:00:00Z","created_at":"2012-01-01T12:00:00Z","updated_at":"2012-01-01T12:00:00Z"}
@@ -376,71 +368,4 @@ Instead of e.g.:
 }
 ```
 
-You may consider optionally providing a way for clients to retrieve 
-more verbose response, either via a query parameter (e.g. `?pretty=true`)
-or via an `Accept` header param (e.g.
-`Accept: application/vnd.heroku+json; version=3; indent=4;`).
-
-### Artifacts
-
-#### Provide machine-readable JSON schema
-
-Provide a machine-readable schema to exactly specify your API. Use
-[prmd](https://github.com/interagent/prmd) to manage your schema, and ensure
-it validates with `prmd verify`.
-
-#### Provide human-readable docs
-
-Provide human-readable documentation that client developers can use to
-understand your API.
-
-If you create a schema with prmd as described above, you can easily
-generate Markdown docs for all endpoints with `prmd doc`.
-
-In addition to endpoint details, provide an API overview with
-information about:
-
-* Authentication, including acquiring and using authentication tokens.
-* API stability and versioning, including how to select the desired API
-  version.
-* Common request and response headers.
-* Error serialization format.
-* Examples of using the API with clients in different languages.
-
-#### Provide executable examples
-
-Provide executable examples that users can type directly into their
-terminals to see working API calls. To the greatest extent possible,
-these examples should be usable verbatim, to minimize the amount of
-work a user needs to do to try the API, e.g.:
-
-```bash
-$ export TOKEN=... # acquire from dashboard
-$ curl -is https://$TOKEN@service.com/users
-```
-
-If you use [prmd](https://github.com/interagent/prmd) to generate Markdown
-docs, you will get examples for each endpoint for free.
-
-#### Describe stability
-
-Describe the stability of your API or its various endpoints according to
-its maturity and stability, e.g. with prototype/development/production
-flags.
-
-See the [Heroku API compatibility policy](https://devcenter.heroku.com/articles/api-compatibility-policy)
-for a possible stability and change management approach.
-
-Once your API is declared production-ready and stable, do not make
-backwards incompatible changes within that API version. If you need to
-make backwards-incompatible changes, create a new API with an
-incremented version number.
-
-
-### Translations
- * [Spanish version](https://github.com/jmnavarro/http-api-design) (based on [2a74f45](https://github.com/interagent/http-api-design/commit/2a74f45b9afaf6c951352f36c3a4e1b0418ed10b)), by [@jmnavarro](https://github.com/jmnavarro/)
- * [Korean version](https://github.com/yoondo/http-api-design) (based on [f38dba6](https://github.com/interagent/http-api-design/commit/f38dba6fd8e2b229ab3f09cd84a8828987188863)), by [@yoondo](https://github.com/yoondo/)
- * [Simplified Chinese version](https://github.com/ZhangBohan/http-api-design-ZH_CN) (based on [337c4a0](https://github.com/interagent/http-api-design/commit/337c4a05ad08f25c5e232a72638f063925f3228a)), by [@ZhangBohan](https://github.com/ZhangBohan/)
- * [Traditional Chinese version](https://github.com/kcyeu/http-api-design) (based on [232f8dc](https://github.com/interagent/http-api-design/commit/232f8dc6a941d0b25136bf64998242dae5575f66)), by [@kcyeu](https://github.com/kcyeu/)
- * [Turkish version](https://github.com/hkulekci/http-api-design/tree/master/tr) (based on [c03842f](https://github.com/interagent/http-api-design/commit/c03842fda80261e82860f6dc7e5ccb2b5d394d51)), by [@hkulekci](https://github.com/hkulekci/)
-
+The API supports a query parameter `pretty=true` to retrieve a more human readable response.
