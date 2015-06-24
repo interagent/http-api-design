@@ -154,7 +154,7 @@ e.g.
 
 #### Downcase paths and attributes
 
-Use downcased and dash-separated path names, for alignment with
+The Gild API uses downcased and dash-separated path names, for alignment with
 hostnames, e.g:
 
 ```
@@ -162,7 +162,7 @@ service-api.com/users
 service-api.com/app-setups
 ```
 
-Downcase attributes as well, but use underscore separators so that
+Attributes are downcase as well, but underscore are used as separators so that
 attribute names can be typed without quotes in JavaScript, e.g.:
 
 ```
@@ -171,18 +171,15 @@ service_class: "first"
 
 #### Support non-id dereferencing for convenience
 
-In some cases it may be inconvenient for end-users to provide IDs to
-identify a resource. For example, a user may think in terms of a Heroku
-app name, but that app may be identified by a UUID. In these cases you
-may want to accept both an id or name, e.g.:
+In some cases the API accepts multiple types of ids to identify a resource.
+For example, a user may think in terms of a company domain name, but that company may be identified by a UUID. In these cases the API
+accepts both an id or name, e.g.:
 
 ```bash
-$ curl https://service.com/apps/{app_id_or_name}
-$ curl https://service.com/apps/97addcf0-c182
-$ curl https://service.com/apps/www-prod
+$ curl https://service.com/companies/{company_id_or_domain}
+$ curl https://service.com/companies/97addcf0-c182
+$ curl https://service.com/companies/gild.com
 ```
-
-Do not accept only names to the exclusion of IDs.
 
 #### Minimize path nesting
 
