@@ -235,8 +235,8 @@ Other failures are handled by the following HTTP status codes:
 
 #### Provide full resources where available
 
-Provide the full resource representation (i.e. the object with all
-attributes) whenever possible in the response. Always provide the full
+The Gild API provides a full resource representation (i.e. the object with all
+attributes) whenever possible in the response. The API always provides the full
 resource on 200 and 201 responses, including `PUT`/`PATCH` and `DELETE`
 requests, e.g.:
 
@@ -268,17 +268,15 @@ Content-Type: application/json;charset=utf-8
 {}
 ```
 
-#### Provide resource (UU)IDs
+#### Resource (UU)IDs
 
-Give each resource an `id` attribute by default. Use UUIDs unless you
-have a very good reason not to. Don’t use IDs that won’t be globally
-unique across instances of the service or other resources in the
-service, especially auto-incrementing IDs.
+Each Gild API resource has an `uuid` attribute by default. 
+Each UUID is globally unique across every instances and resources of the service.
 
-Render UUIDs in downcased `8-4-4-4-12` format, e.g.:
+UUIDs are in downcased `8-4-4-4-12` format, e.g.:
 
 ```
-"id": "01234567-89ab-cdef-0123-456789abcdef"
+"uuid": "01234567-89ab-cdef-0123-456789abcdef"
 ```
 
 #### Provide standard timestamps
