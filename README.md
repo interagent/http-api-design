@@ -22,7 +22,6 @@ This guide is referred in all public and private Pull Requests / code reviews.
   *  [Require Versioning in the Accepts Header](#require-api-versioning-in-path)
   *  [Support ETags for Caching](#support-etags-for-caching)
   *  [Provide Request-Ids for Introspection](#provide-request-ids-for-introspection)
-  *  [Divide Large Responses Across Requests with Ranges](#divide-large-responses-across-requests-with-ranges)
 * [Requests](#requests)
   *  [Accept serialized JSON in request bodies](#accept-serialized-json-in-request-bodies)
   *  [Consistent path formats](#consistent-path-formats)
@@ -90,14 +89,6 @@ if the cache should be updated.
 The Gild API includes a `X-Request-Id` header in each API response, populated with a
 UUID value. By logging these values on the client, server and any backing
 services, we provides a mechanism to trace, diagnose and debug requests.
-
-#### Divide Large Responses Across Requests with Ranges
-
-Large responses should be broken across multiple requests using `Range` headers
-to specify when more data is available and how to retrieve it. See the
-[Heroku Platform API discussion of Ranges](https://devcenter.heroku.com/articles/platform-api-reference#ranges)
-for the details of request and response headers, status codes, limits,
-ordering, and iteration.
 
 ### Requests
 
