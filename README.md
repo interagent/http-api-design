@@ -233,7 +233,7 @@ Other failures are handled by the following HTTP status codes:
 * `429 Too Many Requests`: You have been rate-limited, retry later
 * `500 Internal Server Error`: Something went wrong on the server, check status site and/or report the issue
 
-#### Provide full resources where available
+#### Full resources where available
 
 The Gild API provides a full resource representation (i.e. the object with all
 attributes) whenever possible in the response. The API always provides the full
@@ -279,9 +279,9 @@ UUIDs are in downcased `8-4-4-4-12` format, e.g.:
 "uuid": "01234567-89ab-cdef-0123-456789abcdef"
 ```
 
-#### Provide standard timestamps
+#### Standard timestamps
 
-Provide `created_at` and `updated_at` timestamps for resources by default,
+The API entities contain a `created_at` and `updated_at` timestamps for resources by default,
 e.g:
 
 ```javascript
@@ -293,21 +293,20 @@ e.g:
 }
 ```
 
-These timestamps may not make sense for some resources, in which case
-they can be omitted.
+These timestamps may not make sense for some resources, in which case they are omitted.
 
-#### Use UTC times formatted in ISO8601
+#### UTC times formatted in ISO8601
 
-Accept and return times in UTC only. Render times in ISO8601 format,
+The API accepts and returns times in UTC only. Times are rendered in ISO8601 format,
 e.g.:
 
 ```
 "finished_at": "2012-01-01T12:00:00Z"
 ```
 
-#### Nest foreign key relations
+#### Nested foreign key relations
 
-Serialize foreign key references with a nested object, e.g.:
+Foreign key references are serialized with a nested object, e.g.:
 
 ```javascript
 {
