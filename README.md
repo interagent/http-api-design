@@ -21,7 +21,6 @@ This guide is referred in all public and private Pull Requests / code reviews.
   *  [Require Secure Connections](#require-secure-connections)
   *  [Require Versioning in the Accepts Header](#require-api-versioning-in-path)
   *  [Deprecation policy](#deprecation-policy)
-  *  [Support ETags for Caching](#support-etags-for-caching)
   *  [Provide Request-Ids for Introspection](#provide-request-ids-for-introspection)
 * [Requests](#requests)
   *  [Accept serialized JSON in request bodies](#accept-serialized-json-in-request-bodies)
@@ -91,14 +90,6 @@ You can check the [migration guidelines](https://github.com/Gild/gild-api/blob/m
 When a method or an endpoint gets deprecated, the old method or endpoint will be still supported for 120 days after the 
 deprecation notice - unless the change is introduced as response to a security concern, where the safety of the data
 prevents us to give a more extended notice.
-
-#### Support ETags for Caching
-
-[TODO](https://github.com/snowyu/rest_service/wiki/ETags-in-Grape) 
-The Gild API includes an `ETag` header in all responses, identifying the specific
-version of the returned resource. This allows users to cache resources
-and use requests with this value in the `If-None-Match` header to determine
-if the cache should be updated.
 
 #### Provide Request-Ids for Introspection
 
