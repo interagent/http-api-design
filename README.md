@@ -152,6 +152,19 @@ e.g.
 /interviews/{inteview_id}/actions/stop
 ```
 
+Prefer actions when the endpoint means to act on the resource atomically and does not requires further specifications/params.
+
+```ruby
+POST /articles/1/actions/publish
+```
+
+Prefer a restful representation when the endpoint requires extra specifications and you can represent it as a CRUD action over a resource. Use an action if the CRUD operation will have more side effetcs like creating more resources or active on several layer of business logic. 
+
+```ruby
+POST /users/invitation
+#requires params in the body
+```
+
 #### Downcase paths and attributes
 
 The Gild API uses downcased and dash-separated path names, for alignment with
