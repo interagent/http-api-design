@@ -61,7 +61,7 @@ We require secure connections with TLS to access the API, without any exception.
 It’s not worth trying to figure out or explain when it is OK to use TLS
 and when it’s not, so we just require TLS for everything.
 
-**[TODO](https://github.com/Gild/gild-api/issues/1)** We reject any non-TLS requests by not responding to requests for
+We reject any non-TLS requests by not responding to requests for
 http or port 80 to avoid any insecure data exchange.
 
 #### Require API Versioning in path
