@@ -77,6 +77,11 @@ For example:
     .../v1/resources/:id
     
     .../v2/interviews/
+    
+The current stable version of the Gild API is **1.0** (/v1/).
+The current development version of the Gild API is **2.0** (/v2/).    
+
+The current stable version of the Gild API (v1) will reach end of life in Q1/2016. v2 will then be the new stable version.
 
 #### Deprecation policy
 
