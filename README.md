@@ -24,7 +24,7 @@ We welcome [contributions](CONTRIBUTING.md) to this guide.
 * [Foundations](#foundations)
   *  [Separate Concerns](#separate-concerns)
   *  [Require Secure Connections](#require-secure-connections)
-  *  [Require Versioning in the Accepts Header](#require-versioning-in-the-accepts-header)
+  *  [Require Versioning in the Accept Header](#require-versioning-in-the-accept-header)
   *  [Support ETags for Caching](#support-etags-for-caching)
   *  [Provide Request-Ids for Introspection](#provide-request-ids-for-introspection)
   *  [Divide Large Responses Across Requests with Ranges](#divide-large-responses-across-requests-with-ranges)
@@ -80,7 +80,7 @@ providing any clear gain.  Clients that rely on redirects double up on
 server traffic and render TLS useless since sensitive data will already
  have been exposed during the first call.
 
-#### Require Versioning in the Accepts Header
+#### Require Versioning in the Accept Header
 
 Versioning and the transition between versions can be one of the more
 challenging aspects of designing and operating an API. As such, it is best to
