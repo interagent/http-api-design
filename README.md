@@ -15,6 +15,8 @@ way_.
 We assume you’re familiar with the basics of HTTP+JSON APIs and won’t
 cover all of the fundamentals of those in this guide.
 
+Available for online reading and in multiple formats at [gitbook](https://www.gitbook.com/read/book/geemus/http-api-design).
+
 We welcome [contributions](CONTRIBUTING.md) to this guide.
 
 See [Summary](SUMMARY.md) for Table of Contents.
