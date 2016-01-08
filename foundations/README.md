@@ -1,4 +1,3 @@
-### Foundations
+### Fondamenti
 
-The Foundations section outlines the design principles upon which the rest of
-the guide builds.
+Questa sezione illustra i principi di progettazione, sui quali si basa questa guida
