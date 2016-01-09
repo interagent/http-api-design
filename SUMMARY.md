@@ -65,5 +65,48 @@ Redirects are discouraged since they allow sloppy/bad client behaviour without
 providing any clear gain.  Clients that rely on redirects double up on
 server traffic and render TLS useless since sensitive data will already
  have been exposed during the first call.
+ 
+
+#### Require Versioning in the Accepts Header
+
+Versioning and the transition between versions can be one of the more
+challenging aspects of designing and operating an API. As such, it is best to
+start with some mechanisms in place to mitigate this from the start.
+
+To prevent surprise, breaking changes to users, it is best to require a version
+be specified with all requests. Default versions should be avoided as they are
+very difficult, at best, to change in the future.
+
+It is best to provide version specification in the headers, with other
+metadata, using the `Accept` header with a custom content type, e.g.:
+
+```
+Accept: application/vnd.heroku+json; version=3
+```
+
+
+#### Support ETags for Caching
+
+Include an `ETag` header in all responses, identifying the specific
+version of the returned resource. This allows users to cache resources
+and use requests with this value in the `If-None-Match` header to determine
+if the cache should be updated.
+
+
+#### Provide Request-Ids for Introspection
+
+Include a `Request-Id` header in each API response, populated with a
+UUID value. By logging these values on the client, server and any backing
+services, it provides a mechanism to trace, diagnose and debug requests.
+
+
+#### Divide Large Responses Across Requests with Ranges
+
+Large responses should be broken across multiple requests using `Range` headers
+to specify when more data is available and how to retrieve it. See the
+[Heroku Platform API discussion of Ranges](https://devcenter.heroku.com/articles/platform-api-reference#ranges)
+for the details of request and response headers, status codes, limits,
+ordering, and iteration.
+
 
 
