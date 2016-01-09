@@ -1,7 +1,7 @@
 # HTTP API Design Guide
 
-* [Foundations](foundations/README.md)
-  * [Separate Concerns](foundations/separate-concerns.md)
+* [Fondamenti](#fondamenti)
+  * [Concetti separati](#concetti-separati)
   * [Require Secure Connections](foundations/require-secure-connections.md)
   * [Require Versioning in the Accepts Header](foundations/require-versioning-in-the-accepts-header.md)
   * [Support ETags for Caching](foundations/support-etags-for-caching.md)
@@ -54,15 +54,12 @@ means to pass header information also in edge cases, but headers are preferred
 as they are more flexible and can convey more diverse information.
 
 
-#### Require Secure Connections
+#### Utlizza una connessione sicura (TLS)
 
-Require secure connections with TLS to access the API, without exception.
-It’s not worth trying to figure out or explain when it is OK to use TLS
-and when it’s not. Just require TLS for everything.
+Richiedi una connessione sicura con protocollo TLS per accedere alle APIs, senza eccezioni.
+Non importa cercare di capire quando è opportuno usare TLS oppure quando non lo è. Semplicemente richiedila sempre.
 
-Ideally, simply reject any non-TLS requests by not responding to requests for
-http or port 80 to avoid any insecure data exchange. In environments where this
-is not possible, respond with `403 Forbidden`.
+Idealmente, puoi rifiutare qualsiasi richiesta che non sia fatta utilizzando il protocollo TLS, per evitare scambi di dati ed informazioni non sicuri. Nel caso in cui non possa gestire questo tipo di regola, basta rispondere con un `403 Forbidden`.
 
 Redirects are discouraged since they allow sloppy/bad client behaviour without
 providing any clear gain.  Clients that rely on redirects double up on
