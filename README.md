@@ -60,15 +60,15 @@ No merece la pena intentar averiguar o explicar cuando se debe permitir acceso c
 
 Idealmente, rechaza cualquier petición sin TLS sin responder a peticiones HTTP o al puerto 80, y así evitar cualquier intercambio de información insegura. En entornos en los que esto no sea posible, retorna con `403 Forbidden`.
 
-Las redirecciones están desaconsejadas ya que permiten a los clientes tener comportamientos incorrectos/chapuceros sin ofrecer ninguna ventaja clara. Los clientes que dependen de las redirecciones duplican el tráfico del servidor and hacen que el TLS sea inutil ya que la información sensible ya ha sido expuesta durante la primera llamada.
+Las redirecciones están desaconsejadas ya que permiten a los clientes tener comportamientos incorrectos/chapuceros sin ofrecer ninguna ventaja clara. Los clientes que dependen de las redirecciones duplican el tráfico del servidor y hacen que el TLS sea inutil ya que la información sensible ya ha sido expuesta durante la primera llamada.
 
 #### Versionado con la cabecera Accepts requerido
 
 El versionado y la transición entre versiones puede ser uno de los aspectos más difíciles en el diseño y mantenimiento de un API. Por eso, es mejor empezar con mecanismos para facilitarlo desde el principio.
 
-Para evitar sorpresas, cambios incompatibles para los usuarios, es mejor que la versión sea requerida en todas las peticiones. Las versiones por defecto deben ser evitadas ya que, en el mejor de los casos, son muy difíciles de cambiar en el futuro.
+Para evitar sorpresas, como por ejemplo cambios incompatibles para los usuarios, es mejor que la versión sea requerida en todas las peticiones. Las versiones por defecto deben ser evitadas ya que, en el mejor de los casos, son muy difíciles de cambiar en el futuro.
 
-Es mejor especificar la versión en las cabeeras, junto a otros metadatos, usando la cabecera `Accept` junto con un _content type_ personalizado, por ejemplo:
+Es mejor especificar la versión en las cabeceras, junto a otros metadatos, usando la cabecera `Accept` junto con un _content type_ personalizado, por ejemplo:
 
 ```
 Accept: application/vnd.heroku+json; version=3
@@ -80,7 +80,7 @@ Incluye una cabecera `ETag` en todas las respuestas, identificando la versión e
 
 #### Proporcionar identificadores de petición para introspección
 
-Incluye una cabecear `Request-Id` en cada respuesta del API, junto con un valor UUID. _Logueando_ estos valores en el cliente, en el servidor y cualquier otro servicio de apoyo, se ofrece un mecanismo para _tracear_, diagnosticar y depurar las peticiones.
+Incluye una cabecera `Request-Id` en cada respuesta del API, junto con un valor UUID. _Logueando_ estos valores en el cliente, en el servidor y cualquier otro servicio de apoyo, se ofrece un mecanismo para _tracear_, diagnosticar y depurar las peticiones.
 
 #### Dividir respuestas largas en varias peticiones usando rangos
 
@@ -130,7 +130,7 @@ Content-Type: application/json;charset=utf-8
 }
 ```
 
-Las respuetas `202` no deben incluir la representaciín completa del recurso, p.e.:
+Las respuetas `202` no deben incluir la representación completa del recurso, p.e.:
 
 ```bash
 $ curl -X DELETE \  
@@ -191,7 +191,7 @@ service-api.com/users
 service-api.com/app-setups
 ```
 
-Para los atributos, utiliza también minúscular, pero usa guión bajo (_) para que los nombres de atributos puedan ser tecleados sin comillas en JavaScript, p.e.:
+Para los atributos, utiliza también minúsculas, pero usa guión bajo (_) para que los nombres de atributos puedan ser tecleados sin comillas en JavaScript, p.e.:
 
 ```
 service_class: "first"
@@ -371,8 +371,7 @@ Además de los detalles de los servicios, ofrece un resumen de tu API con inform
 
 Ofrece ejemplos ejecutables que los usuarios puedan probar directamente en sus terminales para ver las llamadas al API en funcionamiento.
 
-Provide executable examples that users can type directly into their
-terminals to see working API calls. En la medida de lo posible, estos ejemplos deben ser utilizables tal cual, para minimizar la cantidad de trabajo necesario para probar el API, p.e.:
+En la medida de lo posible, estos ejemplos deben ser utilizables tal cual, para minimizar la cantidad de trabajo necesario para probar el API, p.e.:
 
 ```bash
 $ export TOKEN=... # acquire from dashboard
