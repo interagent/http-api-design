@@ -67,7 +67,9 @@ server traffic and render TLS useless since sensitive data will already
  have been exposed during the first call.
  
 
-#### Require Versioning in the Accepts Header
+#### Richiedi il versioning negli Accept Headers
+
+Un sistema di versioning e transizione tra le versioni può essere uno degli aspetti più difficili da progettare e realizzare nelle tue REST API. Proprio per questo, è meglio cominciare con alcuni accorgimenti che ci aiuteranno a mitigare questo tipo di problemi sin da subito.
 
 Versioning and the transition between versions can be one of the more
 challenging aspects of designing and operating an API. As such, it is best to
