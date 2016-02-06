@@ -1,4 +1,4 @@
-# HTTP API Design Guide
+# Guida alla progettazione delle API HTTP
 
 * [Fondamenti](#fondamenti)
   * [Concetti separati](#concetti-separati)
