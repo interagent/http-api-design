@@ -6,7 +6,7 @@
   * [Require Versioning in the Accepts Header](foundations/require-versioning-in-the-accepts-header.md)
   * [Support ETags for Caching](foundations/support-etags-for-caching.md)
   * [Provide Request-Ids for Introspection](foundations/provide-request-ids-for-introspection.md)
-  * [Divide Large Responses Across Requests with Ranges](foundations/divide-large-responses-across-requests-with-ranges.md)
+  * [Dividi risposte molto lunghe in piu richieste con range](#dividi-risposte-molto-lunghe-in-piu-richieste-con-range)
 * [Requests](requests/README.md)
   * [Accept serialized JSON in request bodies](requests/accept-serialized-json-in-request-bodies.md)
   * [Resource names](requests/resource-names.md)
@@ -87,7 +87,7 @@ Accept: application/vnd.heroku+json; version=3
 ```
 
 
-#### Support ETags for Caching
+#### Supporta il tag ETag per il caching
 
 Include an `ETag` header in all responses, identifying the specific
 version of the returned resource. This allows users to cache resources
@@ -95,14 +95,14 @@ and use requests with this value in the `If-None-Match` header to determine
 if the cache should be updated.
 
 
-#### Provide Request-Ids for Introspection
+#### Fornisci un parametro Request-Ids per l'analisi
 
 Include a `Request-Id` header in each API response, populated with a
 UUID value. By logging these values on the client, server and any backing
 services, it provides a mechanism to trace, diagnose and debug requests.
 
 
-#### Divide Large Responses Across Requests with Ranges
+#### Dividi risposte molto lunghe in piu richieste con range
 
 Large responses should be broken across multiple requests using `Range` headers
 to specify when more data is available and how to retrieve it. See the
