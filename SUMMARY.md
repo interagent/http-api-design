@@ -2,10 +2,10 @@
 
 * [Fondamenti](#fondamenti)
   * [Concetti separati](#concetti-separati)
-  * [Require Secure Connections](foundations/require-secure-connections.md)
-  * [Require Versioning in the Accepts Header](foundations/require-versioning-in-the-accepts-header.md)
-  * [Support ETags for Caching](foundations/support-etags-for-caching.md)
-  * [Provide Request-Ids for Introspection](foundations/provide-request-ids-for-introspection.md)
+  * [Utlizza una connessione sicura (TLS)](#utlizza-una-connessione-sicura-(tls))
+  * [Richiedi il versioning negli Accept Headers](#richiedi-il-versioning-negli-accept-headers)
+  * [Supporta ETag per il caching](#supporta-etag-per-il-caching)
+  * [Fornisci un parametro Request-Ids per l'analisi](#fornisci-un-parametro-request-ids-per-lanalisi)
   * [Dividi risposte molto lunghe in piu richieste con range](#dividi-risposte-molto-lunghe-in-piu-richieste-con-range)
 * [Requests](requests/README.md)
   * [Accept serialized JSON in request bodies](requests/accept-serialized-json-in-request-bodies.md)
@@ -87,7 +87,7 @@ Accept: application/vnd.heroku+json; version=3
 ```
 
 
-#### Supporta il tag ETag per il caching
+#### Supporta ETag per il caching
 
 Include an `ETag` header in all responses, identifying the specific
 version of the returned resource. This allows users to cache resources
@@ -110,11 +110,11 @@ to specify when more data is available and how to retrieve it. See the
 for the details of request and response headers, status codes, limits,
 ordering, and iteration.
 
-### Requests
+### Richieste
 
 The Requests section provides an overview of patterns for API requests.
 
-#### Accept serialized JSON in request bodies
+#### Accetta JSON serializzato nei corpi delle richieste
 
 Accept serialized JSON on `PUT`/`PATCH`/`POST` request bodies, either
 instead of or in addition to form-encoded data. This creates symmetry
@@ -136,11 +136,11 @@ $ curl -X POST https://service.com/apps \
 }
 ```
 
-##### Resource names
+##### Nomi delle risorse
 
 Use the plural version of a resource name unless the resource in question is a singleton within the system (for example, in most systems a given user would only ever have one account). This keeps it consistent in the way you refer to particular resources.
 
-##### Actions
+##### Azioni
 
 Prefer endpoint layouts that don’t need any special actions for
 individual resources. In cases where special actions are needed, place
@@ -156,9 +156,9 @@ e.g.
 /runs/{run_id}/actions/stop
 ```
 
-#### Use consistent path formats
+#### Usa un formato consistente per i percorsi (path)
 
-#### Downcase paths and attributes
+#### Caratteri minuscoli per percorsi e attributi
 
 Use downcased and dash-separated path names, for alignment with
 hostnames, e.g:
@@ -175,7 +175,7 @@ attribute names can be typed without quotes in JavaScript, e.g.:
 service_class: "first"
 ```
 
-#### Support non-id dereferencing for convenience
+#### Supporta anche riferimenti non-id per comodita
 
 In some cases it may be inconvenient for end-users to provide IDs to
 identify a resource. For example, a user may think in terms of a Heroku
@@ -190,7 +190,7 @@ $ curl https://service.com/apps/www-prod
 
 Do not accept only names to the exclusion of IDs.
 
-#### Minimize path nesting
+#### Minimizza annidamento dei percorsi
 
 In data models with nested parent/child resource relationships, paths
 may become deeply nested, e.g.:
@@ -211,11 +211,11 @@ case above where a dyno belongs to an app belongs to an org:
 /dynos/{dyno_id}
 ```
 
-### Responses
+### Risposte
 
 The Responses section provides an overview of patterns for API responses.
 
-#### Return appropriate status codes
+#### Ritorna sempre un codice di stato appropriato
 
 Return appropriate HTTP status codes with each response. Successful
 responses should be coded according to this guide:
@@ -245,7 +245,7 @@ Return suitable codes to provide additional information when there are errors:
 Refer to the [HTTP response code spec](https://tools.ietf.org/html/rfc7231#section-6)
 for guidance on status codes for user error and server error cases.
 
-#### Provide full resources where available
+#### Fornisci le risorse interamente, quando possibile
 
 Provide the full resource representation (i.e. the object with all
 attributes) whenever possible in the response. Always provide the full
@@ -280,7 +280,7 @@ Content-Type: application/json;charset=utf-8
 {}
 ```
 
-#### Provide resource (UU)IDs
+#### Fornisci gli (UU)IDs delle risorse
 
 Give each resource an `id` attribute by default. Use UUIDs unless you
 have a very good reason not to. Don’t use IDs that won’t be globally
@@ -293,7 +293,7 @@ Render UUIDs in downcased `8-4-4-4-12` format, e.g.:
 "id": "01234567-89ab-cdef-0123-456789abcdef"
 ```
 
-#### Provide standard timestamps
+#### Fornisci dei timestamps standard
 
 Provide `created_at` and `updated_at` timestamps for resources by default,
 e.g:
@@ -310,7 +310,7 @@ e.g:
 These timestamps may not make sense for some resources, in which case
 they can be omitted.
 
-#### Use UTC times formatted in ISO8601
+#### Usa date in formato UTC formattate in ISO8601
 
 Accept and return times in UTC only. Render times in ISO8601 format,
 e.g.:
@@ -319,7 +319,7 @@ e.g.:
 "finished_at": "2012-01-01T12:00:00Z"
 ```
 
-#### Nest foreign key relations
+#### Annida relazioni tramite le chiavi esterne (foreign-key)
 
 Serialize foreign key references with a nested object, e.g.:
 
@@ -359,7 +359,7 @@ or introduce more top-level response fields, e.g.:
 }
 ```
 
-#### Generate structured errors
+#### Genera errori strutturati
 
 Generate consistent, structured response bodies on errors. Include a
 machine-readable error `id`, a human-readable error `message`, and
@@ -381,7 +381,7 @@ HTTP/1.1 429 Too Many Requests
 Document your error format and the possible error `id`s that clients may
 encounter.
 
-#### Show rate limit status
+#### Visualizza lo stato del limite delle richieste
 
 Rate limit requests from clients to protect the health of the service
 and maintain high service quality for other clients. You can use a
@@ -391,7 +391,7 @@ quantify request limits.
 Return the remaining number of request tokens with each request in the
 `RateLimit-Remaining` response header.
 
-#### Keep JSON minified in all responses
+#### Mantieni il JSON minimizzato in tutte le risposte
 
 Extra whitespace adds needless response size to requests, and many
 clients for human consumption will automatically "prettify" JSON
@@ -419,18 +419,18 @@ more verbose response, either via a query parameter (e.g. `?pretty=true`)
 or via an `Accept` header param (e.g.
 `Accept: application/vnd.heroku+json; version=3; indent=4;`).
 
-### Artifacts
+### Artefatti
 
 The Artifacts section describes the physical objects we use to manage and
 discuss API designs and patterns.
 
-#### Provide machine-readable JSON schema
+#### Fornisci uno schema JSON interpretabile
 
 Provide a machine-readable schema to exactly specify your API. Use
 [prmd](https://github.com/interagent/prmd) to manage your schema, and ensure
 it validates with `prmd verify`.
 
-#### Provide human-readable docs
+#### Fornisci una documentazione comprensibile allo sviluppatore
 
 Provide human-readable documentation that client developers can use to
 understand your API.
@@ -448,7 +448,7 @@ information about:
 * Error serialization format.
 * Examples of using the API with clients in different languages.
 
-#### Provide executable examples
+#### Fornisci degli esempi eseguibili
 
 Provide executable examples that users can type directly into their
 terminals to see working API calls. To the greatest extent possible,
@@ -463,7 +463,7 @@ $ curl -is https://$TOKEN@service.com/users
 If you use [prmd](https://github.com/interagent/prmd) to generate Markdown
 docs, you will get examples for each endpoint for free.
 
-#### Describe stability
+#### Specifica la stabilità della tua API
 
 Describe the stability of your API or its various endpoints according to
 its maturity and stability, e.g. with prototype/development/production
