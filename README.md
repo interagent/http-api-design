@@ -1,4 +1,4 @@
-# HTTP API Design Guide
+# Guida alla progettazione delle API HTTP
 
 Questa guida descrive un insieme di pratiche di progettazione relative alla tecnologia HTTP+JSON, originariamente estratta dal lavoro di [Heroku Platform API](https://devcenter.heroku.com/articles/platform-api-reference).
 
