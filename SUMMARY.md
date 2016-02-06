@@ -20,16 +20,16 @@
   * [Fornisci le risorse interamente, quando possibile](#fornisci-le-risorse-interamente-quando-possibile)
   * [Fornisci gli (UU)IDs delle risorse](#fornisci-gli-uuids-delle-risorse)
   * [Fornisci dei timestamps standard](#fornisci-dei-timestamps-standard)
-  * [Use UTC times formatted in ISO8601](responses/use-utc-times-formatted-in-iso8601.md)
-  * [Nest foreign key relations](responses/nest-foreign-key-relations.md)
-  * [Generate structured errors](responses/generate-structured-errors.md)
-  * [Show rate limit status](responses/show-rate-limit-status.md)
-  * [Keep JSON minified in all responses](responses/keep-json-minified-in-all-responses.md)
-* [Artifacts](artifacts/README.md)
-  *  [Provide machine-readable JSON schema](artifacts/provide-machine-readable-json-schema.md)
-  *  [Provide human-readable docs](artifacts/provide-human-readable-docs.md)
-  *  [Provide executable examples](artifacts/provide-executable-examples.md)
-  *  [Describe stability](artifacts/describe-stability.md)
+  * [Usa date in formato UTC formattate in ISO8601](#usa-date-in-formato-utc-formattate-in-iso8601)
+  * [Annida relazioni tramite le chiavi esterne (foreign-key)](#annida-relazioni-tramite-le-chiavi-esterne-foreign-key)
+  * [Genera errori strutturati](#genera-errori-strutturati)
+  * [Visualizza lo stato del limite delle richieste](#visualizza-lo-stato-del-limite-delle-richieste)
+  * [Mantieni il JSON minimizzato in tutte le risposte](#mantieni-il-json-minimizzato-in-tutte-le-risposte)
+* [Artefatti](#artefatti)
+  *  [Fornisci uno schema JSON interpretabile](#fornisci-uno-schema-json-interpretabile)
+  *  [Fornisci una documentazione comprensibile allo sviluppatore](#fornisci-una-documentazione-comprensibile-allo-sviluppatore)
+  *  [Fornisci degli esempi](#fornisci-degli-esempi)
+  *  [Specifica la stabilità della tua API](#specifica-la-stabilita-della-tua-api)
 
 ### Fondamenti
 
@@ -448,7 +448,7 @@ information about:
 * Error serialization format.
 * Examples of using the API with clients in different languages.
 
-#### Fornisci degli esempi eseguibili
+#### Fornisci degli esempi
 
 Provide executable examples that users can type directly into their
 terminals to see working API calls. To the greatest extent possible,
