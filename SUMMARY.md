@@ -40,19 +40,7 @@ Questa sezione illustra i principi di progettazione, sui quali si basa questa gu
 
 Struttura i componenti in maniera semplice mentre li progetti, separando i concetti tra le varie parti del ciclo di richiesta e risposta. Mantenendo la semplicita sui componenti, avrai possibilità di focalizzarti di più su problemi più grandi e più difficili da risolvere.
 
-La richiesta e la risposta saranno fatte in modo da gestire una particolare risorsa oppure una loro collezione. Usa il percorso (path) per indicare un'identità, il body per trasferire il contenuto e gli headers per comunicare dati aggiuntivi (metadata).
-
-
-Keep things simple while designing by separating the concerns between the
-different parts of the request and response cycle. Keeping simple rules here
-allows for greater focus on larger and harder problems.
-
-Requests and responses will be made to address a particular resource or
-collection. Use the path to indicate identity, the body to transfer the
-contents and headers to communicate metadata. Query params may be used as a
-means to pass header information also in edge cases, but headers are preferred
-as they are more flexible and can convey more diverse information.
-
+La richiesta e la risposta saranno fatte in modo da gestire una particolare risorsa oppure una loro collezione. Usa il percorso (path) per indicare un'identità, il body per trasferire il contenuto e gli headers per comunicare dati aggiuntivi (metadata). I parametri di query passati nell'url, possono essere usati come alternativa agli headers, solo in rari casi. Gli headers sono sempre preferiti, perche permettono più flessibilità e permettono di inviare informazioni più dettagliate.
 
 #### Utlizza una connessione sicura (TLS)
 
@@ -61,26 +49,15 @@ Non importa cercare di capire quando è opportuno usare TLS oppure quando non lo
 
 Idealmente, puoi rifiutare qualsiasi richiesta che non sia fatta utilizzando il protocollo TLS, per evitare scambi di dati ed informazioni non sicuri. Nel caso in cui non possa gestire questo tipo di regola, basta rispondere con un `403 Forbidden`.
 
-Redirects are discouraged since they allow sloppy/bad client behaviour without
-providing any clear gain.  Clients that rely on redirects double up on
-server traffic and render TLS useless since sensitive data will already
- have been exposed during the first call.
- 
+I redirects sono sconsigliati in quanto non rappresentano un buon approccio. I clients che si imbattono in molti redirects, raddoppiano il traffico sul server e rendono pressocche inutile il protocollo TLS, in quanto le informazioni sensibili vengono esplicitate durante la prima chiamata http
 
 #### Richiedi il versioning negli Accept Headers
 
 Un sistema di versioning e transizione tra le versioni può essere uno degli aspetti più difficili da progettare e realizzare nelle tue REST API. Proprio per questo, è meglio cominciare con alcuni accorgimenti che ci aiuteranno a mitigare questo tipo di problemi sin da subito.
 
-Versioning and the transition between versions can be one of the more
-challenging aspects of designing and operating an API. As such, it is best to
-start with some mechanisms in place to mitigate this from the start.
+Per evitare sorprese, cambiamenti bruschi agli utenti, è certamente buona norma richiedere di specificare la versione delle APIs in tutte le richieste. Il meccanismo di impostare una versione di default dovrebbe essere evitato, in quanto è molto difficile da cambiare in futuro.
 
-To prevent surprise, breaking changes to users, it is best to require a version
-be specified with all requests. Default versions should be avoided as they are
-very difficult, at best, to change in the future.
-
-It is best to provide version specification in the headers, with other
-metadata, using the `Accept` header with a custom content type, e.g.:
+L'approccio migliore sarebbe quello di specificare la versione negli headers http, con altri metadata, utilizzando per esempio `Accept` header con un `Content-Type` specifico, es:
 
 ```
 Accept: application/vnd.heroku+json; version=3
