@@ -66,36 +66,27 @@ Accept: application/vnd.heroku+json; version=3
 
 #### Supporta ETag per il caching
 
-Include an `ETag` header in all responses, identifying the specific
-version of the returned resource. This allows users to cache resources
-and use requests with this value in the `If-None-Match` header to determine
-if the cache should be updated.
+Includi un header `ETag` in tutte le risposte, identificando la specifica versione della risorsa restituita.
+Questo permetterà gli utenti di aggiungere alla cache le risorse e fare delle richieste con questo valore 
+aggiungendo un `If-None-Match` header per determinare se la cache debba essere aggiornata o meno.
 
 
 #### Fornisci un parametro Request-Ids per l'analisi
 
-Include a `Request-Id` header in each API response, populated with a
-UUID value. By logging these values on the client, server and any backing
-services, it provides a mechanism to trace, diagnose and debug requests.
-
+Includi un parametro `Request-Id` nell'header per ogni risposta della API, popolato con un valore UUID.
+Facendo un log di questi valori nel client, server ed altri servizi ausiliari, è possibile ottenere un meccanismo di tracciabilità, diagnosi e debug delle richieste.
 
 #### Dividi risposte molto lunghe in piu richieste con range
 
-Large responses should be broken across multiple requests using `Range` headers
-to specify when more data is available and how to retrieve it. See the
-[Heroku Platform API discussion of Ranges](https://devcenter.heroku.com/articles/platform-api-reference#ranges)
-for the details of request and response headers, status codes, limits,
-ordering, and iteration.
+Risposte molto grandi, dovrebbero essere divise in più richieste usando un header `Range` per specificare quando più dati sono disponibili e come recuperarli. Dai un'occhiata alla documentazione [Heroku Platform API discussion of Ranges](https://devcenter.heroku.com/articles/platform-api-reference#ranges) per i dettagli degli headers delle richieste e delle risposte, codici di stato, limiti, ordinamenti e iterazioni
 
 ### Richieste
 
-The Requests section provides an overview of patterns for API requests.
+La sezione delle richieste fornisce una panoramica della struttura per le richieste API.
 
 #### Accetta JSON serializzato nei corpi delle richieste
 
-Accept serialized JSON on `PUT`/`PATCH`/`POST` request bodies, either
-instead of or in addition to form-encoded data. This creates symmetry
-with JSON-serialized response bodies, e.g.:
+Accetta JSON serializzato nei corpi delle richieste `PUT`/`PATCH`/`POST` oppure in aggiunta ai dati form-encoded. Questo crea simmetria con i il corpo JSON serializzato delle risposte, es:
 
 ```bash
 $ curl -X POST https://service.com/apps \
@@ -115,7 +106,7 @@ $ curl -X POST https://service.com/apps \
 
 ##### Nomi delle risorse
 
-Use the plural version of a resource name unless the resource in question is a singleton within the system (for example, in most systems a given user would only ever have one account). This keeps it consistent in the way you refer to particular resources.
+Usa il nome plurale di un nome di risorsa a meno che la risorsa in questione non sia un nome singolare relativo al sistema stesso (per esempio in alcuni sistemi un determinato utente può avere un solo account). Questo mantiene la consistenza quando ti riferisci alle risorse
 
 ##### Azioni
 
