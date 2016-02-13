@@ -110,15 +110,14 @@ Usa il nome plurale di un nome di risorsa a meno che la risorsa in questione non
 
 ##### Azioni
 
-Prefer endpoint layouts that don’t need any special actions for
-individual resources. In cases where special actions are needed, place
-them under a standard `actions` prefix, to clearly delineate them:
+Preferisci dei layout per gli endpoint che non prevedono azioni speciali per una determinata risorsa.
+Nel caso in cui sia necessario prevedere la possibilità di azioni speciali, specificale sotto un prefisso standard come `actions`, per definirle in modo chiaro:
 
 ```
 /resources/:resource/actions/:action
 ```
 
-e.g.
+es.
 
 ```
 /runs/{run_id}/actions/stop
@@ -128,16 +127,15 @@ e.g.
 
 #### Caratteri minuscoli per percorsi e attributi
 
-Use downcased and dash-separated path names, for alignment with
-hostnames, e.g:
+Usa dei percorsi in minuscolo e separati da trattini, per congruenza con gli hostnames, es:
 
 ```
 service-api.com/users
 service-api.com/app-setups
 ```
 
-Downcase attributes as well, but use underscore separators so that
-attribute names can be typed without quotes in JavaScript, e.g.:
+Anche per gli attributi utilizza il minuscolo, ma separando le parole con un underscore, in modo che possano essere scritti
+senza l'utilizzo delle virgolette in JavaScript, es:
 
 ```
 service_class: "first"
@@ -145,31 +143,28 @@ service_class: "first"
 
 #### Supporta anche riferimenti non-id per comodita
 
-In some cases it may be inconvenient for end-users to provide IDs to
-identify a resource. For example, a user may think in terms of a Heroku
-app name, but that app may be identified by a UUID. In these cases you
-may want to accept both an id or name, e.g.:
+In alcuni casi potrebbe essere scomodo per gli utenti finali, fornire ID per 
+identificare una risorsa. Per esempio, un utente può pensare in termini del nome di una app, ma questa app può essere identificata tramite un UUID. In questi casi, potresti prevedere di accettare entrambi: ID e nome, es:
 
 ```bash
 $ curl https://service.com/apps/{app_id_or_name}
 $ curl https://service.com/apps/97addcf0-c182
 $ curl https://service.com/apps/www-prod
 ```
-
-Do not accept only names to the exclusion of IDs.
+Non accettare comunque soltanto un nome, senza la possibilità di specificare un ID
 
 #### Minimizza annidamento dei percorsi
 
-In data models with nested parent/child resource relationships, paths
-may become deeply nested, e.g.:
+Nei model che rappresentano i nostri dati con le relazioni padre/figlio annidate, i percorsi possono diventare
+veramente molto lunghi, es:
 
 ```
 /orgs/{org_id}/apps/{app_id}/dynos/{dyno_id}
 ```
 
-Limit nesting depth by preferring to locate resources at the root
-path. Use nesting to indicate scoped collections. For example, for the
-case above where a dyno belongs to an app belongs to an org:
+Limita l'annidamento, preferendo la localizzazione delle risorse nella radice del persorso.
+Usa l'annidamento per indicare una raccolta di elementi. Per esempio,
+per il caso sopra, dove dyno dipende da app che dipende da org:
 
 ```
 /orgs/{org_id}
@@ -181,25 +176,20 @@ case above where a dyno belongs to an app belongs to an org:
 
 ### Risposte
 
-The Responses section provides an overview of patterns for API responses.
+La sezione delle risposte fornisce una panoramica sui pattern da utilizzare per le risposte della API
 
 #### Ritorna sempre un codice di stato appropriato
 
-Return appropriate HTTP status codes with each response. Successful
-responses should be coded according to this guide:
+Ritorna un codice di stato HTTP appropriato per ogni risposta.
+Le risposte con esito positivo, dovrebbero essere accompagnate da codici di stato come di seguito:
 
-* `200`: Request succeeded for a `GET` call, for a `DELETE` or
-  `PATCH` call that completed synchronously, or for a `PUT` call that
-  synchronously updated an existing resource
-* `201`: Request succeeded for a `POST` call that completed
-  synchronously, or for a `PUT` call that synchronously created a new
-  resource
-* `202`: Request accepted for a `POST`, `PUT`, `DELETE`, or `PATCH` call that
-  will be processed asynchronously
-* `206`: Request succeeded on `GET`, but only a partial response
-  returned: see [above on ranges](../foundations/divide-large-responses-across-requests-with-ranges.md)
+* `200`: Richiesta completata con successo per una chiamata (sincrona) `GET`, `DELETE` o
+  `PATCH`, oppure per una chiamata `PUT` (sincrona) che ha completato l'update di una risorsa
+* `201`: Richiesta completata con successo per una chiamata (sincrona) `POST`, o `PUT` che ha creato una nuova risorsa
+* `202`: Richiesta completata con successo per una chiamata `POST`, `PUT`, `DELETE`, o `PATCH` che viene processata in modo asincrono
+* `206`: Richiesta completata con successo per una chiamata `GET`, dove pero viene restituita una risposta parziale: vedi [Dividi risposte molto lunghe in piu richieste con range](#dividi-risposte-molto-lunghe-in-piu-richieste-con-range)
 
-Pay attention to the use of authentication and authorization error codes:
+Fai molta attenzione all'utilizzo dei codici di errore per l'autenticazione e l'autorizzazione:
 
 * `401 Unauthorized`: Request failed because user is not authenticated
 * `403 Forbidden`: Request failed because user does not have authorization to access a specific resource
