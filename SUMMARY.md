@@ -191,24 +191,23 @@ Le risposte con esito positivo, dovrebbero essere accompagnate da codici di stat
 
 Fai molta attenzione all'utilizzo dei codici di errore per l'autenticazione e l'autorizzazione:
 
-* `401 Unauthorized`: Request failed because user is not authenticated
-* `403 Forbidden`: Request failed because user does not have authorization to access a specific resource
+* `401 Unauthorized`: Richiesta fallita per utente non autenticato
+* `403 Forbidden`: Richiesta fallita perchè l'utente non è autorizzato ad accedere ad una risorsa
 
-Return suitable codes to provide additional information when there are errors:
+Ritorna codici di errore adatti fornendo informazioni aggiuntive sul tipo di errore:
 
-* `422 Unprocessable Entity`: Your request was understood, but contained invalid parameters
-* `429 Too Many Requests`: You have been rate-limited, retry later
-* `500 Internal Server Error`: Something went wrong on the server, check status site and/or report the issue
+* `422 Unprocessable Entity`: La tua richiesta è stata compresa, ma contiene dei parametri non validi.
+* `429 Too Many Requests`: Hai superato il limite di richieste, riprova più tardi
+* `500 Internal Server Error`: Qualcosa è andato storto, controlla lo stato del sito/servizio ed eventualmente segnala l'errore
 
-Refer to the [HTTP response code spec](https://tools.ietf.org/html/rfc7231#section-6)
-for guidance on status codes for user error and server error cases.
+Fai sempre riferimento alle specifiche [HTTP response code spec](https://tools.ietf.org/html/rfc7231#section-6)
+per i codici di stato e per gli errori
 
 #### Fornisci le risorse interamente, quando possibile
 
-Provide the full resource representation (i.e. the object with all
-attributes) whenever possible in the response. Always provide the full
-resource on 200 and 201 responses, including `PUT`/`PATCH` and `DELETE`
-requests, e.g.:
+Fornisci la rappresentazione dell'intera risorsa (es. oggetto con tutti gli attributi)
+quando possible nella risposta. Fornisci sempre la risorsa completa con un codice 200 o 201, incluse nelle richieste 
+`PUT`/`PATCH` e `DELETE`, es:
 
 ```bash
 $ curl -X DELETE \
@@ -225,8 +224,8 @@ Content-Type: application/json;charset=utf-8
 }
 ```
 
-202 responses will not include the full resource representation,
-e.g.:
+le risposte con codice 202 non includono l'intera rappresentazione della risorsa,
+es:
 
 ```bash
 $ curl -X DELETE \
@@ -240,12 +239,12 @@ Content-Type: application/json;charset=utf-8
 
 #### Fornisci gli (UU)IDs delle risorse
 
-Give each resource an `id` attribute by default. Use UUIDs unless you
-have a very good reason not to. Don’t use IDs that won’t be globally
-unique across instances of the service or other resources in the
-service, especially auto-incrementing IDs.
+Assegna ad ogni risorssa un attributo `id` di default. Usa gli UUIDs a meno che tu
+non abbia una buona ragione per non farlo. Non usare gli IDs perchè non sono globalmente 
+unici, specialmente quando si hanno più instanze del servizio o delle risorse nel servizio, specialmente
+gli IDs auto-incrementali.
 
-Render UUIDs in downcased `8-4-4-4-12` format, e.g.:
+Visualizza gli UUIDs in formato `8-4-4-4-12` minuscolo, es:
 
 ```
 "id": "01234567-89ab-cdef-0123-456789abcdef"
@@ -253,8 +252,7 @@ Render UUIDs in downcased `8-4-4-4-12` format, e.g.:
 
 #### Fornisci dei timestamps standard
 
-Provide `created_at` and `updated_at` timestamps for resources by default,
-e.g:
+Fornisci di default i timestamp `created_at` e `updated_at` per le risorse, es:
 
 ```javascript
 {
@@ -265,13 +263,13 @@ e.g:
 }
 ```
 
-These timestamps may not make sense for some resources, in which case
-they can be omitted.
+Questi timestamp possono non avere senso per alcune risorse, in questo caso possono 
+essere omessi.
 
 #### Usa date in formato UTC formattate in ISO8601
 
-Accept and return times in UTC only. Render times in ISO8601 format,
-e.g.:
+Accetta e ritorna le date solo in formato UTC. Visualizza le date nel formato
+ISO8601, es:
 
 ```
 "finished_at": "2012-01-01T12:00:00Z"
@@ -279,7 +277,7 @@ e.g.:
 
 #### Annida relazioni tramite le chiavi esterne (foreign-key)
 
-Serialize foreign key references with a nested object, e.g.:
+Serializza i riferimenti delle chiavi esterne con un oggetto annidato, es:
 
 ```javascript
 {
@@ -291,7 +289,7 @@ Serialize foreign key references with a nested object, e.g.:
 }
 ```
 
-Instead of e.g.:
+Invece di, es:
 
 ```javascript
 {
@@ -301,9 +299,8 @@ Instead of e.g.:
 }
 ```
 
-This approach makes it possible to inline more information about the
-related resource without having to change the structure of the response
-or introduce more top-level response fields, e.g.:
+Questo approccio rende possibile la visualizzazione di più informazioni sulla risorsa
+in questione senza dover cambiare la struttura della risposta o introdurre altri campi nella risposta stessa, es:
 
 ```javascript
 {
@@ -319,10 +316,10 @@ or introduce more top-level response fields, e.g.:
 
 #### Genera errori strutturati
 
-Generate consistent, structured response bodies on errors. Include a
-machine-readable error `id`, a human-readable error `message`, and
-optionally a `url` pointing the client to further information about the
-error and how to resolve it, e.g.:
+Genera i corpi di risposta degli errori in modo consistente e strutturato.
+Includi un riferimento `id` all'errore in modo che sia leggibile da una macchina, e un
+campo `message` che sia comprensible all'utente e, opzionalmente un campo `url` che porta 
+l'utente ad una descrizione più dettagliata dell'errore in questione e come risolverlo, es:
 
 ```
 HTTP/1.1 429 Too Many Requests
@@ -336,30 +333,29 @@ HTTP/1.1 429 Too Many Requests
 }
 ```
 
-Document your error format and the possible error `id`s that clients may
-encounter.
+Documenta il formato dell'errore e il possibile error `id` che l'utente può incontrare.
 
 #### Visualizza lo stato del limite delle richieste
 
-Rate limit requests from clients to protect the health of the service
-and maintain high service quality for other clients. You can use a
-[token bucket algorithm](http://en.wikipedia.org/wiki/Token_bucket) to
-quantify request limits.
+Misura i limiti di richieste dai client per proteggere la stabilità del servizio e mantenere una
+qualita altà per gli altri clients. Puoi usare un 
+[token bucket algorithm](http://en.wikipedia.org/wiki/Token_bucket) per misurare e monitorare il
+limite delle richieste
 
-Return the remaining number of request tokens with each request in the
-`RateLimit-Remaining` response header.
+In questo caso, ritorna il numero di richieste rimanenti in ogni richiesta nell'header
+`RateLimit-Remaining`.
 
 #### Mantieni il JSON minimizzato in tutte le risposte
 
-Extra whitespace adds needless response size to requests, and many
-clients for human consumption will automatically "prettify" JSON
-output. It is best to keep JSON responses minified e.g.:
+Gli spazi bianchi extra aumentano inutilmente la dimensione delle richieste/risposte,
+inoltre molti clients adottano automaticamente processi di "prettify" sulle risposte JSON. Rimane una scelta
+migliore mantenere le risposte JSON minimizzate, es:
 
 ```json
 {"beta":false,"email":"alice@heroku.com","id":"01234567-89ab-cdef-0123-456789abcdef","last_login":"2012-01-01T12:00:00Z","created_at":"2012-01-01T12:00:00Z","updated_at":"2012-01-01T12:00:00Z"}
 ```
 
-Instead of e.g.:
+Invece di, es:
 
 ```json
 {
@@ -372,68 +368,61 @@ Instead of e.g.:
 }
 ```
 
-You may consider optionally providing a way for clients to retrieve
-more verbose response, either via a query parameter (e.g. `?pretty=true`)
-or via an `Accept` header param (e.g.
-`Accept: application/vnd.heroku+json; version=3; indent=4;`).
+Puoi considerare di fornire opzionalmente ai clients l'opportunità di recuperare delle risposte
+più verbose (es. `?pretty=true`) o utilizzando un header `Accept` (es. `Accept: application/vnd.heroku+json; version=3; indent=4;`).
 
 ### Artefatti
 
-The Artifacts section describes the physical objects we use to manage and
-discuss API designs and patterns.
+La sezione artefatti descrive gli oggetti che vengono utilizzati per gestire la progettazione delle API
 
 #### Fornisci uno schema JSON interpretabile
 
-Provide a machine-readable schema to exactly specify your API. Use
-[prmd](https://github.com/interagent/prmd) to manage your schema, and ensure
-it validates with `prmd verify`.
+Fornisci uno schema JSON interpretabile per descrivere in maniera formale e precisa la tua API.
+Puoi usare [prmd](https://github.com/interagent/prmd) per gestire lo schema e assicurarti della sua 
+validità usando il comando `prmd verify`.
 
 #### Fornisci una documentazione comprensibile allo sviluppatore
 
-Provide human-readable documentation that client developers can use to
-understand your API.
+Fornisci una documentazione comprensibile che lo sviluppatore e i clients possono consultare per
+usare la tua API.
 
-If you create a schema with prmd as described above, you can easily
-generate Markdown docs for all endpoints with `prmd doc`.
+Se crei uno schema utilizzando prmd come descritto sopra, potrai facilmente generare un documento in formato
+Markdown per tutti gli endpoints usando il comando `prmd doc`.
 
-In addition to endpoint details, provide an API overview with
-information about:
+Oltre alle specifiche degli endpoints, fornisci una panoramica della API con le seguenti 
+informazioni:
 
-* Authentication, including acquiring and using authentication tokens.
-* API stability and versioning, including how to select the desired API
-  version.
-* Common request and response headers.
-* Error serialization format.
-* Examples of using the API with clients in different languages.
+* Autenticazione, specificando come ottenere ed usare un access token
+* Stabilità della API e versionamento, specificando come scegliere la versione della API
+* I comuni headeer delle richieste e delle risposte
+* Errori in formato serializzato
+* Esempi di utilizzo della tua API in diversi linguaggi
 
 #### Fornisci degli esempi
 
-Provide executable examples that users can type directly into their
-terminals to see working API calls. To the greatest extent possible,
-these examples should be usable verbatim, to minimize the amount of
-work a user needs to do to try the API, e.g.:
+Fornisci dei semplici esempi eseguibili che gli utenti possano provare 
+velocemente tramite i loro terminali, per vedere il funzionamento delle chiamate alle API.
+Per essere più chiaro possibile, descrivi gli esempi in modo molto dettagliato, per diminuire
+in maniera considerevole il lavoro dell'utente che dovrà provare ed usare l'API, es:
 
 ```bash
 $ export TOKEN=... # acquire from dashboard
 $ curl -is https://$TOKEN@service.com/users
 ```
 
-If you use [prmd](https://github.com/interagent/prmd) to generate Markdown
-docs, you will get examples for each endpoint for free.
+Se usi [prmd](https://github.com/interagent/prmd) per generare la documentazione in formato Markdown,
+otterrai automaticamente degli esempi per ogni endpoint.
 
 #### Specifica la stabilità della tua API
 
-Describe the stability of your API or its various endpoints according to
-its maturity and stability, e.g. with prototype/development/production
-flags.
+Specifica la stabilità della tua API oppure dei vari endpoints per quanto riguarda la maturità e la stabilità
+della stessa, es. tramite dei flag prototype/development/production.
 
-See the [Heroku API compatibility policy](https://devcenter.heroku.com/articles/api-compatibility-policy)
-for a possible stability and change management approach.
+Dai un'occhiata a [Heroku API compatibility policy](https://devcenter.heroku.com/articles/api-compatibility-policy)
+per possibili cambiamenti nella stabilità o nella gestione delle policy.
 
-Once your API is declared production-ready and stable, do not make
-backwards incompatible changes within that API version. If you need to
-make backwards-incompatible changes, create a new API with an
-incremented version number.
+Una volta che la tua API è pronta per andare in produzione ed è stabile, non fare cambiamenti non retrocompatibili.
+Se hai bisogno di fare dei cambiamenti non retrocompatibili, crea una nuova API con un nuovo numero di versione.
 
 
 
