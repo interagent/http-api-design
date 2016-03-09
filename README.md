@@ -12,7 +12,7 @@ La guida è disponibile in diversi formati a questo link [gitbook](https://www.g
 
 Accettiamo volentieri [contributions](CONTRIBUTING.md) per questa guida.
 
-Vai al [Sommario](SUMMARY.md) per controllare gli argomenti.
+Vai al [Sommario](it/SUMMARY.md) per controllare gli argomenti.
 
 ### Traduzioni
  * [Versione in Portoghese](https://github.com/Gutem/http-api-design/) (based on [fba98f08b5](https://github.com/interagent/http-api-design/commit/fba98f08b50acbb08b7b30c012a6d0ca795e29ee)), di [@Gutem](https://github.com/Gutem/)
