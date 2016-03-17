@@ -17,7 +17,7 @@ cover all of the fundamentals of those in this guide.
 
 Available for online reading and in multiple formats at [gitbook](https://www.gitbook.com/read/book/geemus/http-api-design).
 
-We welcome [contributions](CONTRIBUTING.md) to this guide.
+We welcome [contributions](https://github.com/interagent/http-api-design/blob/master/CONTRIBUTING.md) to this guide.
 
 See [Summary](en/SUMMARY.md) for Table of Contents.
 
