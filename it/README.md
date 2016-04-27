@@ -10,9 +10,9 @@ Assiumiamo che tu sia familiare con i principi base dei rest services HTTP+JSON,
 
 La guida è disponibile in diversi formati a questo link [gitbook](https://www.gitbook.com/read/book/geemus/http-api-design)
 
-Accettiamo volentieri [contributions](CONTRIBUTING.md) per questa guida.
+Accettiamo volentieri [contributions](../CONTRIBUTING.md) per questa guida.
 
-Vai al [Sommario](it/SUMMARY.md) per controllare gli argomenti.
+Vai al [Sommario](SUMMARY.md) per controllare gli argomenti.
 
 ### Traduzioni
  * [Versione in Portoghese](https://github.com/Gutem/http-api-design/) (based on [fba98f08b5](https://github.com/interagent/http-api-design/commit/fba98f08b50acbb08b7b30c012a6d0ca795e29ee)), di [@Gutem](https://github.com/Gutem/)
