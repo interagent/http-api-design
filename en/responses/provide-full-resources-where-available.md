@@ -32,3 +32,5 @@ Content-Type: application/json;charset=utf-8
 ...
 {}
 ```
+
+[Back](return-appropriate-status-codes.md) | [Next](provide-resource-uuids.md)

@@ -10,3 +10,5 @@ Render UUIDs in downcased `8-4-4-4-12` format, e.g.:
 ```
 "id": "01234567-89ab-cdef-0123-456789abcdef"
 ```
+
+[Back](provide-full-resources-where-available.md) | [Next](provide-standard-timestamps.md)

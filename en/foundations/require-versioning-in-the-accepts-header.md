@@ -14,3 +14,5 @@ metadata, using the `Accept` header with a custom content type, e.g.:
 ```
 Accept: application/vnd.heroku+json; version=3
 ```
+
+[Back](require-secure-connections.md) | [Next](support-etags-for-caching.md)

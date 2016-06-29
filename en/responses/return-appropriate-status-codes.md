@@ -27,3 +27,5 @@ Return suitable codes to provide additional information when there are errors:
 
 Refer to the [HTTP response code spec](https://tools.ietf.org/html/rfc7231#section-6)
 for guidance on status codes for user error and server error cases.
+
+[Back](README.md) | [Next](provide-full-resources-where-available.md)

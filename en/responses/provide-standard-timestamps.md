@@ -14,3 +14,5 @@ e.g:
 
 These timestamps may not make sense for some resources, in which case
 they can be omitted.
+
+[Back](provide-resource-uuids.md) | [Next](use-utc-times-formatted-in-iso8601.md)

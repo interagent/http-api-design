@@ -12,3 +12,5 @@ $ curl -is https://$TOKEN@service.com/users
 
 If you use [prmd](https://github.com/interagent/prmd) to generate Markdown
 docs, you will get examples for each endpoint for free.
+
+[Back](provide-human-readable-docs.md) | [Next](describe-stability.md)

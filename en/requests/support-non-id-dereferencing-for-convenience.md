@@ -12,3 +12,5 @@ $ curl https://service.com/apps/www-prod
 ```
 
 Do not accept only names to the exclusion of IDs.
+
+[Back](downcase-paths-and-attributes.md) | [Next](minimize-path-nesting.md)

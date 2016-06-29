@@ -13,3 +13,5 @@ e.g.
 ```
 /runs/{run_id}/actions/stop
 ```
+
+[Back](resource-names.md) | [Next](use-consistent-path-formats.md)
