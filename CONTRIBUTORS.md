@@ -25,3 +25,4 @@
 * Wesley Beary <geemus@gmail.com>
 * e3 <erik@cpan.org>
 * geemus <geemus@gmail.com>
+* felipecao <felipe.carvalho@gmail.com>
