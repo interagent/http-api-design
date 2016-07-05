@@ -3,10 +3,11 @@
 Return appropriate HTTP status codes with each response. Successful
 responses should be coded according to this guide:
 
-* `200`: Request succeeded for a `GET` call, for a `DELETE` or
+* `200`: Request succeeded for a `GET` call, for a `POST`, `DELETE` or
   `PATCH` call that completed synchronously, or for a `PUT` call that
   synchronously updated an existing resource
-* `201`: Request succeeded for a `POST` call that completed
+* `201`: Request succeeded for a `POST` used for creation or `PUT` 
+  callcall that completed
   synchronously, or for a `PUT` call that synchronously created a new
   resource
 * `202`: Request accepted for a `POST`, `PUT`, `DELETE`, or `PATCH` call that
