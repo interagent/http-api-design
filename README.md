@@ -21,7 +21,7 @@ We welcome [contributions](https://github.com/interagent/http-api-design/blob/ma
 
 See [Summary](en/SUMMARY.md) for Table of Contents.
 
-For the best reading experience, we recommend reading via [GitBook](https://www.gitbook.com/read/book/geemus/http-api-design).
+For the best reading experience, we recommend reading via [GitBook](https://www.gitbook.com/book/geemus/http-api-design/details).
 
 ### Gitbook Translations
  * [English](https://geemus.gitbooks.io/http-api-design/content/en/index.html)
