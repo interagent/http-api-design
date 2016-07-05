@@ -9,3 +9,5 @@ collection. Use the path to indicate identity, the body to transfer the
 contents and headers to communicate metadata. Query params may be used as a
 means to pass header information also in edge cases, but headers are preferred
 as they are more flexible and can convey more diverse information.
+
+[Back](README.md) | [Next](require-secure-connections.md)

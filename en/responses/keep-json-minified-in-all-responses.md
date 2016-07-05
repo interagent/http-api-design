@@ -25,3 +25,5 @@ You may consider optionally providing a way for clients to retrieve
 more verbose response, either via a query parameter (e.g. `?pretty=true`)
 or via an `Accept` header param (e.g.
 `Accept: application/vnd.heroku+json; version=3; indent=4;`).
+
+[Back](show-rate-limit-status.md) | [Next](../artifacts/README.md)

@@ -19,3 +19,5 @@ $ curl -X POST https://service.com/apps \
   ...
 }
 ```
+
+[Back](README.md) | [Next](resource-names.md)

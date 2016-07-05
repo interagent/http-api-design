@@ -14,3 +14,5 @@ attribute names can be typed without quotes in JavaScript, e.g.:
 ```
 service_class: "first"
 ```
+
+[Back](use-consistent-path-formats.md) | [Next](support-non-id-dereferencing-for-convenience.md)

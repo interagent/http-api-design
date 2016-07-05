@@ -18,3 +18,5 @@ case above where a dyno belongs to an app belongs to an org:
 /apps/{app_id}/dynos
 /dynos/{dyno_id}
 ```
+
+[Back](support-non-id-dereferencing-for-convenience.md) | [Next](../responses/README.md)

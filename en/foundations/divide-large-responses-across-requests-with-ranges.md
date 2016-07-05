@@ -5,3 +5,5 @@ to specify when more data is available and how to retrieve it. See the
 [Heroku Platform API discussion of Ranges](https://devcenter.heroku.com/articles/platform-api-reference#ranges)
 for the details of request and response headers, status codes, limits,
 ordering, and iteration.
+
+[Back](provide-request-ids-for-introspection.md) | [Next](../requests/README.md)

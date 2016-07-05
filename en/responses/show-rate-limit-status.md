@@ -7,3 +7,5 @@ quantify request limits.
 
 Return the remaining number of request tokens with each request in the
 `RateLimit-Remaining` response header.
+
+[Back](generate-structured-errors.md) | [Next](keep-json-minified-in-all-responses.md)

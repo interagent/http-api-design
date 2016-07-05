@@ -19,3 +19,5 @@ HTTP/1.1 429 Too Many Requests
 
 Document your error format and the possible error `id`s that clients may
 encounter.
+
+[Back](nest-foreign-key-relations.md) | [Next](show-rate-limit-status.md)
