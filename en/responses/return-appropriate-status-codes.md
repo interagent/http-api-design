@@ -3,12 +3,14 @@
 Return appropriate HTTP status codes with each response. Successful
 responses should be coded according to this guide:
 
-* `200`: Request succeeded for a `GET` call, for a `POST`, `DELETE` or
-  `PATCH` call that completed synchronously, or for a `PUT` call that
-  synchronously updated an existing resource
-* `201`: Request succeeded for a `POST` or a `PUT` call that synchronously created a new
-  resource. Don't forget the Location header to point to the newly created resource,
-  it is usefull for `POST` because the target resource is not the created resource.
+* `200`: Request succeeded for a `GET`, `POST`, `DELETE`, or `PATCH` call that
+  completed synchronously, or a `PUT` call that synchronously updated an
+  existing resource
+* `201`: Request succeeded for a `POST`, or `PUT` call that synchronously
+  created a new resource. It is also best practice to provide a 'Location'
+  header pointing to the newly created resource. This is particularly useful
+  in the `POST` context as the new resource will have a different URL than the
+  original request.
 * `202`: Request accepted for a `POST`, `PUT`, `DELETE`, or `PATCH` call that
   will be processed asynchronously
 * `206`: Request succeeded on `GET`, but only a partial response
