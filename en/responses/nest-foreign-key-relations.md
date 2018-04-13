@@ -31,9 +31,14 @@ or introduce more top-level response fields, e.g.:
   "name": "service-production",
   "owner": {
     "id": "5d8201b0...",
-    "name": "Alice",
     "email": "alice@heroku.com"
   },
   // ...
 }
 ```
+
+When nesting foreign key relations, use either the full record or just the foreign keys. Providing a subset of fields can lead to surprises and confusion, makes inconsistencies between different actions and endpoints more likely.
+
+To avoid inconsistency and confusion, serialize either:
+- **foreign keys** only - values the full record can be looked up with, like `id`, `slug`, `email`.
+- **full record**, all fields (this would be an "embedded record")
