@@ -85,3 +85,26 @@ e.g:
   }
 ]
 ```
+
+### Object
+
+* Acceptable values:
+  * object
+  * null
+
+e.g:
+
+```javascript
+[
+  {
+    "name": "service-production",
+    "owner": {
+      "id": "5d8201b0..."
+     }
+  },
+  {
+    "name": "service-staging",
+    "owner": null
+  }
+]
+```
