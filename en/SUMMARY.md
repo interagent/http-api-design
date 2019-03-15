@@ -20,6 +20,7 @@
   * [Provide full resources where available](responses/provide-full-resources-where-available.md)
   * [Provide resource (UU)IDs](responses/provide-resource-uuids.md)
   * [Provide standard timestamps](responses/provide-standard-timestamps.md)
+  * [Provide standard response types](responses/provide-standard-response-types.md)
   * [Use UTC times formatted in ISO8601](responses/use-utc-times-formatted-in-iso8601.md)
   * [Nest foreign key relations](responses/nest-foreign-key-relations.md)
   * [Generate structured errors](responses/generate-structured-errors.md)
