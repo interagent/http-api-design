@@ -33,7 +33,7 @@ e.g:
 ```javascript
 [
   {
-    "provisioned_licensese": true
+    "provisioned_licenses": true
   },
   {
     "provisioned_licenses": false
