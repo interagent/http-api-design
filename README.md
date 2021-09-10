@@ -26,6 +26,7 @@ For the best reading experience, we recommend reading via [GitBook](https://www.
 ### Gitbook Translations
  * [English](https://geemus.gitbooks.io/http-api-design/content/en/index.html)
  * [Italian](https://geemus.gitbooks.io/http-api-design/content/it/index.html) (based on [f12db3e](https://github.com/interagent/http-api-design/commit/f12db3e)), by [@diegomariani](https://github.com/diegomariani/)
+ * [Simplified Chinese](https://one-programmer.github.io/docs/http-api-design/) (based on [40d114b](https://github.com/interagent/http-api-design/commit/40d114b6efbc60b84c804dbe7ad34b0d5e155a49)), by [@ZhangBohan](https://github.com/ZhangBohan/)
 
 ### Git Translations
  * [Korean](https://github.com/yoondo/http-api-design) (based on [f38dba6](https://github.com/interagent/http-api-design/commit/f38dba6fd8e2b229ab3f09cd84a8828987188863)), by [@yoondo](https://github.com/yoondo/)
